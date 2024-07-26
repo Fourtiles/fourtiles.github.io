@@ -1,0 +1,36 @@
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: min-content 1fr min-content;
+  gap: var(--space-md) var(--space-md);
+  grid-auto-flow: row;
+  grid-template-areas:
+    'header'
+    'content'
+    'footer';
+
+  height: 100vh;
+}
+
+header {
+  justify-self: stretch;
+  grid-area: header;
+}
+
+main {
+  justify-self: stretch;
+  align-self: stretch;
+  grid-area: content;
+}
+
+footer {
+  justify-self: center;
+  grid-area: footer;
+}
