@@ -72,7 +72,10 @@ onMounted(() => {
     setTimeout(() => {
       validWord.value = false
       game.resetCurrentWord()
-      if (game.fourtileWords.includes(word)) game.shuffleTiles()
+      if (game.fourtileWords.includes(word)) {
+        if (game.allFourtilesFound) game.sortTiles()
+        else game.shuffleTiles()
+      }
     }, 500)
   })
 })
