@@ -28,7 +28,7 @@ const useGameStore = defineStore('game', {
       return isNull(state.game)
     },
     numWordsRemaining(state): number {
-      return this.allPossibleWords.length ?? 0 - state.foundWords.length
+      return this.allPossibleWords.length - state.foundWords.length
     },
     allFourtilesFound(state): boolean {
       return intersection(state.foundWords, this.fourtileWords).length === this.fourtileWords.length
