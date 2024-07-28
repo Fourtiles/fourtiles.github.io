@@ -14,16 +14,38 @@ import FoundWords from './game/FoundWords.vue'
 
 <style scoped>
 main {
-  margin: 0 var(--space-md);
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-template-rows: min-content 1fr;
-  grid-auto-columns: 1fr;
   gap: var(--space-md) var(--space-md);
-  grid-auto-flow: row;
-  grid-template-areas:
-    'found-words current-word'
-    'found-words tiles';
+}
+
+@media (min-aspect-ratio: 1/1) {
+  main {
+    width: 100%;
+    height: 100%;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: min-content 1fr;
+    grid-auto-columns: 1fr;
+    grid-auto-flow: row;
+    grid-template-areas:
+      'found-words current-word'
+      'found-words tiles';
+  }
+}
+
+@media (max-aspect-ratio: 1/1) {
+  main {
+    grid-auto-columns: 1fr;
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content 1fr min-content;
+    grid-template-areas:
+      'current-word'
+      'tiles'
+      'found-words';
+  }
+}
+
+main > div {
+  padding: 0 var(--space-md);
 }
 
 #current-word {
