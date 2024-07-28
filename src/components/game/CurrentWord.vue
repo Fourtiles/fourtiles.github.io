@@ -53,7 +53,10 @@ const animationInProgress = computed(
 onMounted(() => {
   gameBus.on('wordAlreadyFound', () => {
     wordAlreadyFound.value = true
-    setTimeout(() => (wordAlreadyFound.value = false), 1000)
+    setTimeout(() => {
+      wordAlreadyFound.value = false
+      game.resetCurrentWord()
+    }, 1000)
   })
 
   gameBus.on('wordNotRecognized', () => {
