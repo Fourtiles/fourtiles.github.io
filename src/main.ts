@@ -5,6 +5,7 @@ import 'normalize.css/normalize.css'
 
 import './assets/styles/global.css'
 import './assets/styles/layout.css'
+import './assets/styles/unicorn.css'
 
 import App from './App.vue'
 import { bugsnagVue } from '@/config/bugsnag'

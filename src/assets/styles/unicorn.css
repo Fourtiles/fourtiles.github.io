@@ -1,0 +1,24 @@
+:root {
+  --blue-bg: #00518a;
+  --horn: #ffddab;
+  --horn-line: #f4c598;
+
+  --pink-light: #ffaeb0;
+  --pink-dark: #ff545a;
+
+  --purple-eye: #502e75;
+
+  --white-face: #eee;
+  --white-face-shadow: #e1e1e1;
+
+  --grey-leg: #cdd1d2;
+  --red-hoof: #ff5654;
+
+  --r-red: #ff2220;
+  --r-orange: #ffae00;
+  --r-yellow: #ffe100;
+  --r-green: #85c900;
+  --r-blue: #00b0ff;
+  --r-purple: #8139df;
+  --r-pink: #ff40e1;
+}
