@@ -45,12 +45,12 @@ function addFoundWord() {
 #tile-grid {
   display: grid;
   grid-template-areas:
-    'current-word current-word current-word current-word current-word'
-    'tile tile tile tile tile'
-    'tile tile tile tile tile'
-    'tile tile tile tile tile'
-    'tile tile tile tile tile';
-  grid-template-columns: repeat(5, 1fr);
+    'current-word current-word current-word current-word'
+    'tile tile tile tile'
+    'tile tile tile tile'
+    'tile tile tile tile'
+    'tile tile tile tile';
+  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(5, 1fr);
   grid-column-gap: var(--space-md);
   grid-row-gap: var(--space-md);
