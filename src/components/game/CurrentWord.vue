@@ -24,7 +24,7 @@
         :class="{ hidden: animationInProgress }"
         @click="game.resetCurrentWord"
       >
-        <IconCircleXFilled color="var(--color-brat)" :size="36" stroke="3" />
+        <IconCircleXFilled stroke="3" />
       </button>
     </div>
   </Sparkles>
@@ -116,6 +116,11 @@ onMounted(() => {
 
 #reset-word-button.hidden {
   opacity: 0;
+}
+
+#reset-word-button > svg {
+  color: var(--color-brat);
+  height: var(--space-lg);
 }
 </style>
 
