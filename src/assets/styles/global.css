@@ -26,7 +26,8 @@
 
   --font-size-sm: calc(var(--font-size-base) * 0.75);
   --font-size-md: var(--font-size-base);
-  --font-size-lg: calc(var(--font-size-base) * 2);
+  --font-size-lg: calc(var(--font-size-base) * 1.25);
+  --font-size-xl: calc(var(--font-size-base) * 2);
 
   --font-family: Arial, sans-serif;
   --font-family-title: 'Arial Narrow', Arial, sans-serif;

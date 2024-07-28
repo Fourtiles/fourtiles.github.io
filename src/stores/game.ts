@@ -41,6 +41,9 @@ const useGameStore = defineStore('game', {
     },
     tilesOnBoard(state): string[] {
       return difference(state.tiles, state.currentWord)
+    },
+    numFourtilesFound(state): number {
+      return intersection(state.foundWords, this.fourtileWords).length
     }
   },
 

@@ -3,17 +3,15 @@
     <div id="current-word" key="current-word">
       <CurrentWord />
     </div>
-    <div class="spacer" />
+    <div key="spacer" class="spacer" />
     <Tile v-for="tile in game.tiles" :key="tile" :tile="tile" />
   </TransitionGroup>
-  <ActionButtons />
 </template>
 
 <script setup lang="ts">
 import Tile from '@/components/game/Tile.vue'
 import useGameStore from '@/stores/game'
 import CurrentWord from '@/components/game/CurrentWord.vue'
-import ActionButtons from '@/components/game/ActionButtons.vue'
 
 const game = useGameStore()
 </script>

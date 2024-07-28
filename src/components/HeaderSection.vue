@@ -11,7 +11,7 @@ header {
 
 h1 {
   font-family: var(--font-family-title);
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-xl);
   font-weight: 300;
   text-align: center;
   letter-spacing: 0.75px;
