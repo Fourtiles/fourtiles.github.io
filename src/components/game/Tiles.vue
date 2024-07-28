@@ -3,6 +3,7 @@
     <div id="current-word" key="current-word">
       <CurrentWord />
     </div>
+    <div class="spacer" />
     <Tile v-for="tile in game.tiles" :key="tile" :tile="tile" />
   </TransitionGroup>
   <ActionButtons />
@@ -22,12 +23,13 @@ const game = useGameStore()
   display: grid;
   grid-template-areas:
     'current-word current-word current-word current-word'
-    'tile tile tile tile'
-    'tile tile tile tile'
-    'tile tile tile tile'
-    'tile tile tile tile';
+    'spacer       spacer       spacer       spacer'
+    'tile         tile         tile         tile'
+    'tile         tile         tile         tile'
+    'tile         tile         tile         tile'
+    'tile         tile         tile         tile';
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-rows: 1fr 0 repeat(4, 1fr);
   grid-column-gap: var(--space-md);
   grid-row-gap: var(--space-md);
   justify-items: stretch;
@@ -38,6 +40,10 @@ const game = useGameStore()
   grid-area: current-word;
   justify-self: center;
   align-self: center;
+}
+
+.spacer {
+  grid-area: spacer;
 }
 
 .tiles-move, /* apply transition to moving elements */
