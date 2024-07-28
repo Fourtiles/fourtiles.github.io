@@ -7,7 +7,7 @@
   >
     {{ props.tile }}
   </div>
-  <div v-else class="disabled" @click="toggleWord">&nbsp;</div>
+  <div v-else class="disabled" @click="toggleWord">{{ props.tile }}</div>
 </template>
 
 <script setup lang="ts">
@@ -46,12 +46,15 @@ div {
   box-shadow: 4px 4px 10px 0 rgba(0, 0, 0, 0.25);
   border-radius: var(--border-radius-sm);
   cursor: pointer;
+  user-select: none;
 }
 
 .disabled {
   border: 2px solid var(--color-disabled);
   background-color: white;
   box-shadow: none;
+  padding: calc(var(--space-md) - 2px);
+  color: transparent;
 }
 
 .used {

@@ -1,5 +1,6 @@
 <template>
   <TransitionGroup id="tile-grid" name="tiles" tag="div">
+    <div id="current-word" key="current-word"><CurrentWord /></div>
     <Tile v-for="tile in game.tiles" :key="tile" :tile="tile" />
   </TransitionGroup>
 
@@ -19,10 +20,11 @@
 </template>
 
 <script setup lang="ts">
-import { IconCircleCheck, IconArrowsShuffle, IconSortDescending2Filled } from '@tabler/icons-vue'
+import { IconArrowsShuffle, IconCircleCheck, IconSortDescending2Filled } from '@tabler/icons-vue'
 import Tile from '@/components/game/Tile.vue'
 import useGameStore from '@/stores/game'
 import { computed } from 'vue'
+import CurrentWord from '@/components/game/CurrentWord.vue'
 
 const game = useGameStore()
 
@@ -42,12 +44,24 @@ function addFoundWord() {
 <style scoped>
 #tile-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-areas:
+    'current-word current-word current-word current-word current-word'
+    'tile tile tile tile tile'
+    'tile tile tile tile tile'
+    'tile tile tile tile tile'
+    'tile tile tile tile tile';
+  grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(5, 1fr);
   grid-column-gap: var(--space-md);
   grid-row-gap: var(--space-md);
   justify-items: stretch;
   align-items: stretch;
+}
+
+#current-word {
+  grid-area: current-word;
+  justify-self: center;
+  align-self: center;
 }
 
 #actions {

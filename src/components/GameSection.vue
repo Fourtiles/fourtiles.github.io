@@ -1,13 +1,11 @@
 <template>
   <main>
-    <div id="current-word"><CurrentWord /></div>
     <div id="tiles"><Tiles /></div>
     <div id="found-words"><FoundWords /></div>
   </main>
 </template>
 
 <script setup lang="ts">
-import CurrentWord from './game/CurrentWord.vue'
 import Tiles from './game/Tiles.vue'
 import FoundWords from './game/FoundWords.vue'
 </script>
@@ -23,12 +21,10 @@ main {
     width: 100%;
     height: 100%;
     grid-template-columns: 1fr 2fr;
-    grid-template-rows: min-content 1fr;
+    grid-template-rows: 1fr;
     grid-auto-columns: 1fr;
     grid-auto-flow: row;
-    grid-template-areas:
-      'found-words current-word'
-      'found-words tiles';
+    grid-template-areas: 'found-words tiles';
   }
 }
 
@@ -36,9 +32,8 @@ main {
   main {
     grid-auto-columns: 1fr;
     grid-template-columns: 1fr;
-    grid-template-rows: min-content 1fr min-content;
+    grid-template-rows: 1fr min-content;
     grid-template-areas:
-      'current-word'
       'tiles'
       'found-words';
   }
@@ -46,11 +41,6 @@ main {
 
 main > div {
   padding: 0 var(--space-md);
-}
-
-#current-word {
-  grid-area: current-word;
-  justify-self: center;
 }
 
 #tiles {
