@@ -77,7 +77,8 @@ const useGameStore = defineStore('game', {
       this.foundWords.push(foundWord)
       gameBus.emit('validWordFound', foundWord)
 
-      if (this.allFourtilesFound) gameBus.emit('allFourtilesFound')
+      if (this.allFourtilesFound && this.fourtileWords.includes(foundWord))
+        gameBus.emit('allFourtilesFound')
       if (this.allWordsFound) gameBus.emit('allWordsFound')
 
       return true
