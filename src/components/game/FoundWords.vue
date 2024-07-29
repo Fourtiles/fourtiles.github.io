@@ -14,8 +14,11 @@
     </ul>
 
     <div id="show-all-words">
-      <a v-if="!showAllWords" @click.prevent="showAllWords = true">Show all words</a>
-      <p v-else id="showing-all-words" class="muted">Showing all words.</p>
+      <div>
+        <a v-if="!showAllWords" @click.prevent="showAllWords = true">Show all words</a>
+        <p v-else id="showing-all-words" class="muted">Showing all words.</p>
+      </div>
+      <div><a @click="startRandomGame">Start a new game</a></div>
     </div>
   </div>
 </template>
@@ -25,6 +28,7 @@ import useGameStore from '@/stores/game'
 import { computed, ref } from 'vue'
 import FoundWord from '@/components/game/FoundWord.vue'
 import { identity, sortBy } from 'lodash-es'
+import { startRandomGame } from '@/functions'
 
 const game = useGameStore()
 
@@ -55,8 +59,13 @@ const noFoundWords = computed(() => game.foundWords.length === 0)
 }
 
 #show-all-words {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
   padding: var(--space-sm);
   text-align: center;
+  gap: var(--space-md);
 }
 
 ul {

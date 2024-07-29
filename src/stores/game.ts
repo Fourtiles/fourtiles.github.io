@@ -59,6 +59,10 @@ const useGameStore = defineStore('game', {
       })
     },
 
+    resetGame() {
+      this.game = null
+    },
+
     addFoundWord() {
       const foundWord = this.currentWord.join('')
 

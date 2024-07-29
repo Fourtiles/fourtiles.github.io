@@ -15,13 +15,14 @@
 import HeaderSection from '@/components/HeaderSection.vue'
 import FooterSection from '@/components/FooterSection.vue'
 import GameSection from '@/components/GameSection.vue'
-import useGameStore, { type Game } from '@/stores/game'
-import { random, sample } from 'lodash-es'
+import useGameStore from '@/stores/game'
+import { random } from 'lodash-es'
 import { onMounted, ref } from 'vue'
 import confetti from 'canvas-confetti'
 import gameBus from '@/emitters/gameBus'
 import Spinner from '@/components/Spinner.vue'
 import Unicorn from '@/components/Unicorn.vue'
+import { startRandomGame } from '@/functions'
 
 const game = useGameStore()
 
@@ -50,11 +51,6 @@ function fireworks(duration: number) {
   }, 250)
 }
 
-async function randomGame(): Promise<Game | undefined> {
-  const games = (await import('@/data/games.json')).default as Game[]
-  return sample(games)
-}
-
 onMounted(async () => {
   gameBus.on('allFourtilesFound', () => fireworks(5000))
   gameBus.on('allWordsFound', () => {
@@ -63,8 +59,7 @@ onMounted(async () => {
     setTimeout(() => (showUnicorn.value = false), 10000)
   })
 
-  const newGame = await randomGame()
-  if (newGame) game.startGame(newGame)
+  await startRandomGame()
 })
 </script>
 
