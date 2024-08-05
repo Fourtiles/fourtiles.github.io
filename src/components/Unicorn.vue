@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div class="unicorn-container">
+  <div class="unicorn-container" data-testid="unicorn">
     <div class="unicorn">
       <div class="header">
         <div class="horn">

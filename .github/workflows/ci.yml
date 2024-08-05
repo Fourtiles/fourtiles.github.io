@@ -10,6 +10,22 @@ on:
     branches: [main]
 
 jobs:
+  e2e:
+    name: E2E Tests
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: true
+    - name: Enable Corepack
+      run: corepack enable
+    - uses: cypress-io/github-action@v6
+      with:
+        build: yarn build
+        start: npx vite preview --port 4173
+        record: true
+      env:
+        CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
   lint:
     name: Linters
     runs-on: ubuntu-latest

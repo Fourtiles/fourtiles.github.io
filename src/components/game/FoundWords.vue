@@ -1,7 +1,8 @@
 <template>
-  <div id="found-words-container">
-    <div id="words-remaining">
-      {{ numWordsRemaining }} {{ game.numWordsRemaining === 1 ? 'word' : 'words' }}
+  <div id="found-words-container" data-testid="found-words">
+    <div id="words-remaining" role="heading">
+      <span data-testid="words-remaining">{{ numWordsRemaining }}</span>
+      {{ game.numWordsRemaining === 1 ? 'word' : 'words' }}
       remaining
     </div>
 

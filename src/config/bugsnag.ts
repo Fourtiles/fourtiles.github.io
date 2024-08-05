@@ -2,7 +2,7 @@ import BugsnagPerformance from '@bugsnag/browser-performance'
 import Bugsnag, { type Plugin } from '@bugsnag/js'
 import BugsnagPluginVue, { type BugsnagPluginVueResult } from '@bugsnag/plugin-vue'
 
-let bugsnagVue: BugsnagPluginVueResult | null
+let bugsnagVue: BugsnagPluginVueResult | undefined
 
 if (import.meta.env.VUE_APP_BUGSNAG_API_KEY) {
   Bugsnag.start({
@@ -13,7 +13,7 @@ if (import.meta.env.VUE_APP_BUGSNAG_API_KEY) {
 
   bugsnagVue = Bugsnag.getPlugin('vue')
 } else {
-  bugsnagVue = null
+  bugsnagVue = undefined
 }
 
 export { bugsnagVue }

@@ -2,6 +2,7 @@
   <Sparkles :color="SPARKLE_COLORS" :active="validWord">
     <div
       id="current-word-container"
+      data-testid="current-word"
       :class="{
         'word-already-found': wordAlreadyFound,
         'unknown-word': unknownWord,
@@ -22,6 +23,7 @@
         id="reset-word-button"
         :disabled="animationInProgress"
         :class="{ hidden: animationInProgress }"
+        aria-label="Reset"
         @click="game.resetCurrentWord"
       >
         <IconCircleXFilled stroke="3" />

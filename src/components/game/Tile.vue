@@ -3,11 +3,15 @@
     v-if="shouldDisplay"
     class="tile"
     :class="{ used: usedInFourtile, invalid: props.invalid }"
+    role="button"
+    data-testid="tile"
     @click="toggleWord"
   >
     {{ props.tile }}
   </div>
-  <div v-else class="disabled" @click="toggleWord">{{ props.tile }}</div>
+  <div v-else class="disabled" role="button" data-testid="tile" @click="toggleWord">
+    {{ props.tile }}
+  </div>
 </template>
 
 <script setup lang="ts">

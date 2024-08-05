@@ -1,18 +1,24 @@
 <template>
   <div id="actions">
-    <button class="round" @click="game.shuffleTiles()">
+    <button class="round" aria-label="Shuffle" @click="game.shuffleTiles()">
       <IconArrowsShuffle size="24" color="white" />
     </button>
 
     <button
       id="add-found-word"
       :disabled="game.currentWord.length === 0"
+      aria-label="Add"
       @click="game.addFoundWord"
     >
       <IconCircleCheck size="96" :color="addFoundWordColor" />
     </button>
 
-    <button class="round" :disabled="!game.allFourtilesFound" @click="game.sortTiles()">
+    <button
+      class="round"
+      :disabled="!game.allFourtilesFound"
+      aria-label="Sort"
+      @click="game.sortTiles()"
+    >
       <IconSortDescending2Filled size="24" color="white" />
     </button>
   </div>

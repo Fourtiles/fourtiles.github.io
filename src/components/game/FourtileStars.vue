@@ -1,13 +1,17 @@
 <template>
   <div v-if="game.numFourtilesFound > 0" id="star-list">
     <div v-for="(word_, i) in game.fourtileWords" :key="i">
-      <IconStarFilled v-if="game.numFourtilesFound > i" class="animate-star" />
-      <IconStar v-else />
+      <IconStarFilled
+        v-if="game.numFourtilesFound > i"
+        class="animate-star"
+        data-testid="star-filled"
+      />
+      <IconStar v-else data-testid="star-open" />
     </div>
   </div>
   <p v-else id="instructions">
     Make words by combining 2 or more tiles. Find words using 4 tiles to win
-    <nobr><IconStarFilled />s!</nobr>
+    <span class="nobr"><IconStarFilled />s!</span>
   </p>
 </template>
 
@@ -60,5 +64,9 @@ const game = useGameStore()
   vertical-align: middle;
   height: var(--font-size-lg);
   color: var(--color-brat);
+}
+
+.nobr {
+  white-space: nowrap;
 }
 </style>
