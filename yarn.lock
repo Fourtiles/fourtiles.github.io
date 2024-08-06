@@ -907,6 +907,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@pinia/testing@npm:^0.1.4":
+  version: 0.1.4
+  resolution: "@pinia/testing@npm:0.1.4"
+  dependencies:
+    vue-demi: "npm:^0.14.8"
+  peerDependencies:
+    pinia: ">=2.2.0"
+  checksum: 10c0/6b8479c30bcfaa47299140985c450ddf82dd764bff84a63c77c53ee0dcaefe314a3054fd8ac52ffc5b4497c9680b2de44e9cb8ff68e54e31e7d7793d5d8a1b62
+  languageName: node
+  linkType: hard
+
 "@pkgjs/parseargs@npm:^0.11.0":
   version: 0.11.0
   resolution: "@pkgjs/parseargs@npm:0.11.0"
@@ -3546,6 +3557,7 @@ __metadata:
     "@bugsnag/browser-performance": "npm:^2.7.1"
     "@bugsnag/js": "npm:^7.25.0"
     "@bugsnag/plugin-vue": "npm:^7.25.0"
+    "@pinia/testing": "npm:^0.1.4"
     "@rushstack/eslint-patch": "npm:^1.8.0"
     "@tabler/icons-vue": "npm:^3.11.0"
     "@testing-library/cypress": "npm:^10.0.2"

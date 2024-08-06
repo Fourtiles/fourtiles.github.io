@@ -28,6 +28,7 @@
     "vue": "^3.4.35"
   },
   "devDependencies": {
+    "@pinia/testing": "^0.1.4",
     "@rushstack/eslint-patch": "^1.8.0",
     "@testing-library/cypress": "^10.0.2",
     "@testing-library/vue": "^8.1.0",

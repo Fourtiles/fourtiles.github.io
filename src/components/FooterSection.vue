@@ -7,7 +7,6 @@
   </footer>
 </template>
 
-<script setup lang="ts"></script>
 <style scoped>
 p {
   font-size: var(--font-size-sm);

@@ -10,6 +10,24 @@ on:
     branches: [main]
 
 jobs:
+  unit:
+    name: Unit Tests
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: true
+    - name: Enable Corepack
+      run: corepack enable
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        cache: yarn
+        node-version: 20.x
+    - name: Install dependencies
+      run: yarn install
+    - name: Run unit tests
+      run: yarn test:unit
   e2e:
     name: E2E Tests
     runs-on: ubuntu-latest
