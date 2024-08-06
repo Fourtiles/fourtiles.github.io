@@ -2,6 +2,7 @@
 
 describe('Gameplay', () => {
   beforeEach(() => {
+    cy.clearLocalStorage()
     cy.visit('/')
     cy.findByTestId('words-remaining').invoke('text').then(parseInt).as('wordsRemaining')
   })

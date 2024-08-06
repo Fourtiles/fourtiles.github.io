@@ -23,6 +23,7 @@ import gameBus from '@/emitters/gameBus'
 import Spinner from '@/components/Spinner.vue'
 import Unicorn from '@/components/Unicorn.vue'
 import { startRandomGame } from '@/functions'
+import addLocalStorageHooks from '@/stores/addLocalStorageHooks'
 
 const game = useGameStore()
 
@@ -59,7 +60,8 @@ onMounted(async () => {
     setTimeout(() => (showUnicorn.value = false), 10000)
   })
 
-  await startRandomGame()
+  addLocalStorageHooks()
+  if (!game.game) await startRandomGame()
 })
 </script>
 
