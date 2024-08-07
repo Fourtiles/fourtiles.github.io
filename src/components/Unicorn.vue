@@ -201,7 +201,7 @@
         width: 50px;
         height: 18px;
         border-radius: 9px;
-        right: 0px;
+        right: 0;
         box-shadow:
           -12px 18px var(--blue-bg),
           13px 54px var(--blue-bg),
@@ -281,7 +281,7 @@
       width: 70px;
       height: 18px;
       border-radius: 9px;
-      right: 0px;
+      right: 0;
       box-shadow:
         10px 18px var(--blue-bg),
         10px 54px var(--blue-bg);

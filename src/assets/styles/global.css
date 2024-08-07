@@ -1,10 +1,9 @@
 :root {
   --color-brat: #8ace00;
   --color-auburn: #ac3931;
-  --color-platinum: #dddddd;
+  --color-platinum: #ddd;
   --color-black: #040303;
   --color-cadet-gray: #95a5b2;
-
   --color-title: black;
   --color-text: var(--color-black);
   --color-text-muted: var(--color-cadet-gray);
@@ -12,25 +11,20 @@
   --color-border: var(--color-platinum);
   --color-disabled: var(--color-platinum);
   --color-invalid: var(--color-auburn);
-
   --font-size-base: 1em;
   --spacing-base: 1em;
-
   --space-xs: calc(var(--spacing-base) / 4);
   --space-sm: calc(var(--spacing-base) / 2);
   --space-md: var(--spacing-base);
   --space-lg: calc(var(--spacing-base) * 2);
-
   --border-radius-md: var(--spacing-base);
   --border-radius-sm: calc(var(--spacing-base) / 2);
-
   --font-size-sm: calc(var(--font-size-base) * 0.75);
   --font-size-md: var(--font-size-base);
   --font-size-lg: calc(var(--font-size-base) * 1.25);
   --font-size-xl: calc(var(--font-size-base) * 2);
-
-  --font-family: Arial, sans-serif;
-  --font-family-title: 'Arial Narrow', Arial, sans-serif;
+  --font-family: arial, sans-serif;
+  --font-family-title: 'Arial Narrow', arial, sans-serif;
 }
 
 html,

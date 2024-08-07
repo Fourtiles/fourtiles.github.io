@@ -7,15 +7,13 @@ body,
 
 #container {
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: min-content 1fr min-content;
   gap: var(--space-md) var(--space-md);
   grid-auto-flow: row;
-  grid-template-areas:
-    'header'
-    'content'
-    'footer';
-
+  grid-template:
+    'header'  min-content
+    'content' 1fr
+    'footer'  min-content
+    / 1fr;
   height: 100vh;
 }
 
@@ -25,8 +23,7 @@ header {
 }
 
 main {
-  justify-self: stretch;
-  align-self: stretch;
+  place-self: stretch stretch;
   grid-area: content;
 }
 

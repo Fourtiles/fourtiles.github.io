@@ -19,25 +19,21 @@ const game = useGameStore()
 <style scoped>
 #tile-grid {
   display: grid;
-  grid-template-areas:
-    'current-word current-word current-word current-word'
-    'spacer       spacer       spacer       spacer'
-    'tile         tile         tile         tile'
-    'tile         tile         tile         tile'
-    'tile         tile         tile         tile'
-    'tile         tile         tile         tile';
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 1fr 0 repeat(4, 1fr);
-  grid-column-gap: var(--space-md);
-  grid-row-gap: var(--space-md);
-  justify-items: stretch;
-  align-items: stretch;
+  grid-template:
+    'current-word current-word current-word current-word' 1fr
+    'spacer       spacer       spacer       spacer' 0
+    'tile         tile         tile         tile' 1fr
+    'tile         tile         tile         tile' 1fr
+    'tile         tile         tile         tile' 1fr
+    'tile         tile         tile         tile' 1fr
+    / 1fr 1fr 1fr 1fr;
+  grid-gap: var(--space-md) var(--space-md);
+  place-items: stretch stretch;
 }
 
 #current-word {
   grid-area: current-word;
-  justify-self: center;
-  align-self: center;
+  place-self: center center;
 }
 
 .spacer {

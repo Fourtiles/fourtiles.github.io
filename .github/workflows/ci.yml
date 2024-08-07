@@ -64,3 +64,5 @@ jobs:
       run: yarn lint
     - name: Type check
       run: yarn type-check
+    - name: Run Stylelint
+      run: yarn lint:style

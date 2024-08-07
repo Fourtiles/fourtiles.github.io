@@ -16,41 +16,16 @@ import HeaderSection from '@/components/HeaderSection.vue'
 import FooterSection from '@/components/FooterSection.vue'
 import GameSection from '@/components/GameSection.vue'
 import useGameStore from '@/stores/game'
-import { random } from 'lodash-es'
 import { onMounted, ref } from 'vue'
-import confetti from 'canvas-confetti'
 import gameBus from '@/emitters/gameBus'
 import Spinner from '@/components/Spinner.vue'
 import Unicorn from '@/components/Unicorn.vue'
-import { startRandomGame } from '@/functions'
+import { fireworks, startRandomGame } from '@/functions'
 import addLocalStorageHooks from '@/stores/addLocalStorageHooks'
 
 const game = useGameStore()
 
 const showUnicorn = ref(false)
-
-function fireworks(duration: number) {
-  const animationEnd = Date.now() + duration
-  const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 }
-
-  const interval: ReturnType<typeof setInterval> = setInterval(() => {
-    const timeLeft = animationEnd - Date.now()
-    if (timeLeft <= 0) return clearInterval(interval)
-
-    const particleCount = 50 * (timeLeft / duration)
-    // since particles fall down, start a bit higher than random
-    confetti({
-      ...defaults,
-      particleCount,
-      origin: { x: random(0.1, 0.3), y: random() - 0.2 }
-    })
-    confetti({
-      ...defaults,
-      particleCount,
-      origin: { x: random(0.7, 0.9), y: random() - 0.2 }
-    })
-  }, 250)
-}
 
 onMounted(async () => {
   gameBus.on('allFourtilesFound', () => fireworks(5000))
@@ -70,12 +45,15 @@ onMounted(async () => {
   0% {
     transform: translate(150vw, -50%) rotateX(0deg);
   }
+
   50% {
     transform: translate(-150vw, -50%) rotateX(0deg);
   }
+
   51% {
     transform: translate(-150vw, -50%) rotate(180deg);
   }
+
   100% {
     transform: translate(150vw, -50%) rotate(180deg);
   }

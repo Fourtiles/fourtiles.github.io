@@ -48,7 +48,7 @@ const addFoundWordColor = computed(() =>
 button.round {
   background-color: var(--color-brat);
   border-radius: 50%;
-  padding: 5px 5px 1px 5px; /* hacky way to get it centered in the button */
+  padding: 5px 5px 1px; /* hacky way to get it centered in the button */
 }
 
 button:active:not(:disabled) {

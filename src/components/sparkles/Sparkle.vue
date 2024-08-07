@@ -32,9 +32,11 @@ onMounted(() => {
   0% {
     transform: scale(0);
   }
+
   50% {
     transform: scale(1);
   }
+
   100% {
     transform: scale(0);
   }
@@ -44,6 +46,7 @@ onMounted(() => {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(180deg);
   }

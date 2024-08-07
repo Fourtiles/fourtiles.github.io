@@ -89,10 +89,12 @@ onMounted(() => {
   100% {
     transform: translateX(0);
   }
+
   25%,
   75% {
     transform: translateX(-5px);
   }
+
   50% {
     transform: translateX(5px);
   }

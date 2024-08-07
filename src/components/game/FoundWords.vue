@@ -44,7 +44,7 @@ const noFoundWords = computed(() => game.foundWords.length === 0)
 
 <style scoped>
 #found-words-container {
-  padding: 0 0;
+  padding: 0;
   border: 3px solid var(--color-brat);
   border-radius: var(--border-radius-md);
 }

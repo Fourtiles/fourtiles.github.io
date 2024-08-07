@@ -27,28 +27,26 @@ main {
   gap: var(--space-md) var(--space-md);
 }
 
-@media (min-aspect-ratio: 1/1) {
+@media (aspect-ratio >= 1/1) {
   main {
     width: 100%;
     height: 100%;
     grid-auto-columns: 1fr;
-    grid-template-columns: 1fr 2fr;
-    grid-template-rows: min-content 1fr;
-    grid-template-areas:
-      'fourtile-stars fourtile-stars'
-      'word-list      tiles';
+    grid-template:
+      'fourtile-stars fourtile-stars' min-content
+      'word-list      tiles' 1fr
+      / 1fr 2fr;
   }
 }
 
-@media (max-aspect-ratio: 1/1) {
+@media (aspect-ratio < 1/1) {
   main {
     grid-auto-columns: 1fr;
-    grid-template-columns: 1fr;
-    grid-template-rows: min-content min-content min-content min-content;
-    grid-template-areas:
-      'fourtile-stars'
-      'tiles'
-      'word-list';
+    grid-template:
+      'fourtile-stars' min-content
+      'tiles' min-content
+      'word-list' min-content
+      / 1fr;
   }
 }
 
@@ -63,13 +61,11 @@ main > div {
 
 .tiles {
   grid-area: tiles;
-  align-self: center;
-  justify-self: center;
+  place-self: center center;
 }
 
 .fourtile-stars {
   grid-area: fourtile-stars;
-  justify-self: center;
-  align-self: center;
+  place-self: center center;
 }
 </style>

@@ -47,7 +47,7 @@ div {
   padding: var(--space-md);
   text-align: center;
   background-color: var(--color-brat);
-  box-shadow: 4px 4px 10px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 4px 4px 10px 0 rgb(0 0 0 / 25%);
   border-radius: var(--border-radius-sm);
   cursor: pointer;
   user-select: none;
