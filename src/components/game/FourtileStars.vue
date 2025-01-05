@@ -43,9 +43,9 @@ const game = useGameStore()
 
 #star-list {
   display: flex;
-  justify-content: center;
-  align-items: center;
   gap: var(--space-md);
+  align-items: center;
+  justify-content: center;
 }
 
 #star-list svg {
@@ -54,16 +54,16 @@ const game = useGameStore()
 }
 
 #instructions {
-  font-size: var(--font-size-lg);
   padding: 0;
   margin: 0;
+  font-size: var(--font-size-lg);
   text-align: center;
 }
 
 #instructions svg {
-  vertical-align: middle;
   height: var(--font-size-lg);
   color: var(--color-brat);
+  vertical-align: middle;
 }
 
 .nobr {
