@@ -60,18 +60,17 @@
 
   .horn {
     position: relative;
-    overflow: hidden;
     width: 40px;
     height: 50px;
+    overflow: hidden;
 
     .lines-container {
-      width: 20px;
-      height: 50px;
       position: absolute;
-      overflow: hidden;
-      transform: skew(-20deg, 68deg);
       top: 25px;
       left: 10px;
+      width: 20px;
+      height: 50px;
+      overflow: hidden;
       background: var(--horn);
       background: linear-gradient(
         105deg,
@@ -85,6 +84,7 @@
         var(--horn-line) 43%,
         var(--horn) 44%
       );
+      transform: skew(-20deg, 68deg);
     }
   }
 
@@ -95,41 +95,41 @@
   }
 
   .face {
+    position: relative;
+    z-index: 1;
     display: flex;
     justify-content: center;
     margin-top: 30px;
-    position: relative;
-    z-index: 1;
 
     .pink {
-      z-index: 2;
       position: relative;
+      z-index: 2;
       width: 80px;
       height: 85px;
       background-color: var(--pink-light);
       border-radius: 20px 8px 8px 20px;
 
       &::before {
-        content: '';
         position: absolute;
-        width: 8px;
-        height: 8px;
-        background-color: var(--pink-dark);
-        border-radius: 50%;
         top: 20px;
         left: 10px;
+        width: 8px;
+        height: 8px;
+        content: '';
+        background-color: var(--pink-dark);
+        border-radius: 50%;
         box-shadow: 25px 0 var(--pink-dark);
       }
 
       &::after {
-        content: '';
         position: absolute;
-        width: 55px;
-        height: 40px;
-        background-color: var(--pink-dark);
-        border-radius: 4px 4px 30px 30px;
         bottom: 5px;
         left: 11px;
+        width: 55px;
+        height: 40px;
+        content: '';
+        background-color: var(--pink-dark);
+        border-radius: 4px 4px 30px 30px;
       }
     }
 
@@ -137,32 +137,32 @@
       position: relative;
       width: 90px;
       height: 85px;
-      background-color: var(--white-face);
       margin-left: -30px;
+      background-color: var(--white-face);
       border-bottom-right-radius: 35px;
       box-shadow: 0 11px var(--white-face-shadow);
 
       &::before {
-        content: '';
         position: absolute;
-        width: 8px;
-        height: 8px;
-        background-color: white;
-        border-radius: 50%;
         top: 20px;
         right: 30px;
+        width: 8px;
+        height: 8px;
+        content: '';
+        background-color: white;
+        border-radius: 50%;
         box-shadow: 3px 4px 0 7px var(--purple-eye);
       }
 
       &::after {
-        content: '';
         position: absolute;
-        width: 14px;
-        height: 35px;
-        background-color: var(--pink-dark);
-        border-radius: 7px 7px 0 0;
         top: -35px;
         right: 4px;
+        width: 14px;
+        height: 35px;
+        content: '';
+        background-color: var(--pink-dark);
+        border-radius: 7px 7px 0 0;
         box-shadow: 0 0 0 4px var(--white-face);
       }
     }
@@ -170,18 +170,18 @@
 
   .hair {
     position: relative;
-    overflow: hidden;
     width: 230px;
     height: 180px;
     margin-left: -100px;
+    overflow: hidden;
     border-top-left-radius: 30px;
 
     .inner-hair {
       position: relative;
       width: 230px;
       height: 18px;
-      border-radius: 0 9px 9px 0;
       background: var(--r-red);
+      border-radius: 0 9px 9px 0;
       box-shadow:
         -15px 18px var(--r-orange),
         -15px 36px var(--r-yellow),
@@ -197,11 +197,11 @@
 
       &::after {
         position: relative;
-        overflow: hidden;
+        right: 0;
         width: 50px;
         height: 18px;
+        overflow: hidden;
         border-radius: 9px;
-        right: 0;
         box-shadow:
           -12px 18px var(--blue-bg),
           13px 54px var(--blue-bg),
@@ -216,9 +216,9 @@
     position: relative;
     width: 90px;
     height: 50px;
-    background-color: var(--white-face);
-    margin-left: -10px;
     margin-top: -95px;
+    margin-left: -10px;
+    background-color: var(--white-face);
   }
 
   .body {
@@ -227,47 +227,47 @@
 
   .main {
     position: relative;
+    left: 200px;
     width: 300px;
     height: 150px;
-    left: 200px;
     background: var(--white-face);
     background: radial-gradient(circle at 250px 65%, #fff 0%, #fff 70px, var(--white-face) 71px);
-    border-bottom-left-radius: 50px;
-    border-bottom-right-radius: 75px;
     border-top-right-radius: 75px;
+    border-bottom-right-radius: 75px;
+    border-bottom-left-radius: 50px;
 
     &::after {
-      content: '';
       position: absolute;
+      top: -20px;
+      left: 70px;
       width: 40px;
       height: 40px;
-      left: 70px;
-      top: -20px;
-      border-bottom-left-radius: 60px;
+      content: '';
       border-bottom: 20px solid var(--white-face);
       border-left: 20px solid var(--white-face);
+      border-bottom-left-radius: 60px;
     }
 
     &::before {
-      content: '';
       position: absolute;
+      top: -20px;
+      left: -20px;
       width: 20px;
       height: 70px;
-      left: -20px;
-      top: -20px;
+      content: '';
       background-color: var(--blue-bg);
     }
   }
 
   .tail {
     position: relative;
+    top: 20px;
+    left: 100px;
+    z-index: -1;
     width: 200px;
     height: 18px;
-    z-index: -1;
-    border-radius: 0 9px 9px 0;
-    left: 100px;
-    top: 20px;
     background: var(--r-red);
+    border-radius: 0 9px 9px 0;
     box-shadow:
       0 18px var(--r-orange),
       60px 36px var(--r-yellow),
@@ -277,37 +277,37 @@
 
     &::after {
       position: relative;
-      overflow: hidden;
+      right: 0;
       width: 70px;
       height: 18px;
+      overflow: hidden;
       border-radius: 9px;
-      right: 0;
       box-shadow:
         10px 18px var(--blue-bg),
         10px 54px var(--blue-bg);
     }
 
     &::before {
-      content: '';
       position: absolute;
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
       bottom: -140px;
       left: 10px;
+      width: 120px;
+      height: 120px;
+      content: '';
       background: var(--blue-bg)
         linear-gradient(220deg, var(--blue-bg) 0%, var(--blue-bg) 55%, transparent 56%);
+      border-radius: 50%;
     }
 
     .inner-tail {
       position: absolute;
+      top: 72px;
+      right: 58px;
       width: 28px;
       height: 28px;
       background-color: transparent;
       border-bottom: 10px solid var(--blue-bg);
       border-left: 10px solid var(--blue-bg);
-      right: 58px;
-      top: 72px;
       border-bottom-left-radius: 30px;
     }
   }
@@ -325,15 +325,15 @@
       border-bottom-left-radius: 80px;
 
       &::after {
-        content: '';
         position: absolute;
+        right: -20px;
+        bottom: -35px;
         width: 20px;
         height: 35px;
+        content: '';
         background-color: var(--red-hoof);
-        bottom: -35px;
-        right: -20px;
-        border-bottom-right-radius: 17.5px;
         border-top-right-radius: 17.5px;
+        border-bottom-right-radius: 17.5px;
       }
     }
 
@@ -346,47 +346,47 @@
     }
 
     :nth-child(1) {
-      transform: rotate(90deg);
       top: -30px;
       left: 200px;
       z-index: -1;
+      transform: rotate(90deg);
       transform-origin: top left;
       animation: leg1 1s ease-in-out infinite alternate;
     }
 
     :nth-child(2) {
-      transform: rotate(40deg);
       top: -10px;
       left: 250px;
+      transform: rotate(40deg);
       transform-origin: top left;
       animation: leg2 1s 0.15s ease-in-out infinite alternate;
 
       &::before {
-        content: '';
         position: absolute;
-        width: 35px;
-        height: 20px;
-        background-color: #fff;
         top: -20px;
         left: -35px;
-        border-top-right-radius: 17.5px;
+        width: 35px;
+        height: 20px;
+        content: '';
+        background-color: #fff;
         border-top-left-radius: 17.5px;
+        border-top-right-radius: 17.5px;
       }
     }
 
     :nth-child(3) {
-      transform: rotate(30deg);
       top: -15px;
       left: 352px;
       z-index: -1;
+      transform: rotate(30deg);
       transform-origin: top left;
       animation: leg3 1s ease-in-out infinite alternate;
     }
 
     :nth-child(4) {
-      transform: rotate(60deg);
       top: -5px;
       left: 400px;
+      transform: rotate(60deg);
       transform-origin: top left;
       animation: leg4 1s ease-in-out infinite alternate;
     }

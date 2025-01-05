@@ -38,17 +38,17 @@ const addFoundWordColor = computed(() =>
 
 <style scoped>
 #actions {
-  margin-top: var(--space-lg);
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-evenly;
   align-items: center;
+  justify-content: space-evenly;
+  margin-top: var(--space-lg);
 }
 
 button.round {
+  padding: 5px 5px 1px; /* hacky way to get it centered in the button */
   background-color: var(--color-brat);
   border-radius: 50%;
-  padding: 5px 5px 1px; /* hacky way to get it centered in the button */
 }
 
 button:active:not(:disabled) {
@@ -56,7 +56,7 @@ button:active:not(:disabled) {
 }
 
 button:not(#add-found-word):disabled {
-  background-color: var(--color-disabled);
   cursor: inherit;
+  background-color: var(--color-disabled);
 }
 </style>
