@@ -7,11 +7,11 @@
 <style scoped>
 body,
 html {
-  height: 100%;
-  margin: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100%;
+  margin: 0;
   background-color: #f3f4f6;
 }
 
