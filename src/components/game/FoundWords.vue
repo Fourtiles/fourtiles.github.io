@@ -50,11 +50,11 @@ const noFoundWords = computed(() => game.foundWords.length === 0)
 }
 
 #words-remaining {
-  background-color: var(--color-brat);
-  color: white;
-  text-align: center;
   padding: var(--space-sm);
   font-weight: bold;
+  color: white;
+  text-align: center;
+  background-color: var(--color-brat);
   border-top-left-radius: var(--border-radius-sm);
   border-top-right-radius: var(--border-radius-sm);
 }
@@ -62,11 +62,11 @@ const noFoundWords = computed(() => game.foundWords.length === 0)
 #show-all-words {
   display: flex;
   flex-flow: row;
-  justify-content: center;
+  gap: var(--space-md);
   align-items: center;
+  justify-content: center;
   padding: var(--space-sm);
   text-align: center;
-  gap: var(--space-md);
 }
 
 ul {

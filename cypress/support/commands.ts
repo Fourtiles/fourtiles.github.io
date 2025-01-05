@@ -42,8 +42,8 @@ Cypress.Commands.add('tilesForWord', (word: string) => {
       if (currentWord.length > word.length) return null
 
       for (let i = 0; i < tiles.length; i++) {
-        if (!visited.has(i)) {
-          const nextSequence = [...currentSequence, tiles[i]]
+        if (!visited.has(i) && tiles[i]) {
+          const nextSequence = [...currentSequence, tiles[i]!]
 
           if (word.startsWith(nextSequence.join(''))) {
             visited.add(i)
@@ -64,7 +64,7 @@ Cypress.Commands.add('tilesForWord', (word: string) => {
 Cypress.Commands.add('invalidWord', () => {
   cy.tiles().then((tiles) => {
     cy.words().then((words) => {
-      let unknownWord: string[] = [words[0]]
+      let unknownWord: string[] = [words[0] ?? '']
       while (words.includes(unknownWord.join(''))) {
         const tile1 = sample(tiles)!
         const tile2 = sample(without(tiles, tile1))!

@@ -54,8 +54,8 @@ onMounted(() => {
 
 .sparkle-wrapper {
   position: absolute;
-  pointer-events: none;
   z-index: 2;
+  pointer-events: none;
   animation: grow-and-shrink 600ms ease-in-out forwards;
 }
 

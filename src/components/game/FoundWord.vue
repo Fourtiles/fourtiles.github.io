@@ -20,9 +20,9 @@ const isFourtile = computed(() => game.fourtileWords.includes(props.word))
 
 <style scoped>
 li {
-  list-style-type: none;
-  margin: 0 var(--space-md);
   padding: var(--space-xs) 0;
+  margin: 0 var(--space-md);
+  list-style-type: none;
 }
 
 li:not(.found) {

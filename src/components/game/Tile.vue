@@ -46,19 +46,19 @@ function toggleWord() {
 div {
   padding: var(--space-md);
   text-align: center;
-  background-color: var(--color-brat);
-  box-shadow: 4px 4px 10px 0 rgb(0 0 0 / 25%);
-  border-radius: var(--border-radius-sm);
   cursor: pointer;
   user-select: none;
+  background-color: var(--color-brat);
+  border-radius: var(--border-radius-sm);
+  box-shadow: 4px 4px 10px 0 rgb(0 0 0 / 25%);
 }
 
 .disabled {
-  border: 2px solid var(--color-disabled);
-  background-color: white;
-  box-shadow: none;
   padding: calc(var(--space-md) - 2px);
   color: transparent;
+  background-color: white;
+  border: 2px solid var(--color-disabled);
+  box-shadow: none;
 }
 
 .used {

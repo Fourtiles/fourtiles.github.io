@@ -27,7 +27,7 @@ const game = useGameStore()
     'tile         tile         tile         tile' 1fr
     'tile         tile         tile         tile' 1fr
     / 1fr 1fr 1fr 1fr;
-  grid-gap: var(--space-md) var(--space-md);
+  gap: var(--space-md) var(--space-md);
   place-items: stretch stretch;
 }
 
