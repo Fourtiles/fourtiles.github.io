@@ -102,9 +102,9 @@ onMounted(() => {
 
 #current-word-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
   gap: var(--space-sm);
+  align-items: center;
+  justify-content: center;
   transition: gap 0.5s;
 }
 
@@ -129,8 +129,8 @@ onMounted(() => {
 }
 
 #reset-word-button > svg {
-  color: var(--color-brat);
   height: var(--space-lg);
+  color: var(--color-brat);
 }
 </style>
 
