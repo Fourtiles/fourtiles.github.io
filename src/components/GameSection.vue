@@ -29,24 +29,24 @@ main {
 
 @media (aspect-ratio >= 1/1) {
   main {
-    width: 100%;
-    height: 100%;
-    grid-auto-columns: 1fr;
     grid-template:
       'fourtile-stars fourtile-stars' min-content
       'word-list      tiles' 1fr
       / 1fr 2fr;
+    grid-auto-columns: 1fr;
+    width: 100%;
+    height: 100%;
   }
 }
 
 @media (aspect-ratio < 1/1) {
   main {
-    grid-auto-columns: 1fr;
     grid-template:
       'fourtile-stars' min-content
       'tiles' min-content
       'word-list' min-content
       / 1fr;
+    grid-auto-columns: 1fr;
   }
 }
 

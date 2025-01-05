@@ -63,9 +63,9 @@ onMounted(async () => {
   position: fixed;
   top: 50%;
   left: 50%;
-  animation: unicorn-path 10s linear;
-  transform: translate(100vw, -50%);
   z-index: 1;
   pointer-events: none;
+  transform: translate(100vw, -50%);
+  animation: unicorn-path 10s linear;
 }
 </style>

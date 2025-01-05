@@ -23,7 +23,7 @@ jobs:
       uses: actions/setup-node@v4
       with:
         cache: yarn
-        node-version: 20.x
+        node-version-file: .nvmrc
     - name: Install dependencies
       run: yarn install
     - name: Run unit tests
@@ -57,7 +57,7 @@ jobs:
       uses: actions/setup-node@v4
       with:
         cache: yarn
-        node-version: 20.x
+        node-version-file: .nvmrc
     - name: Install dependencies
       run: yarn install
     - name: Run ESLint
@@ -65,4 +65,4 @@ jobs:
     - name: Type check
       run: yarn type-check
     - name: Run Stylelint
-      run: yarn lint:style
+      run: yarn stylelint
