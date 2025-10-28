@@ -21,15 +21,15 @@ Sentry.init({
   integrations: [
     Sentry.vueIntegration({
       tracingOptions: {
-        trackComponents: true,
-      },
+        trackComponents: true
+      }
     }),
-    Sentry.replayIntegration(),
+    Sentry.replayIntegration()
   ],
   tracesSampleRate: 1.0,
   enableLogs: true,
   replaysSessionSampleRate: 0.1,
-  replaysOnErrorSampleRate: 1.0,
+  replaysOnErrorSampleRate: 1.0
 })
 
 const pinia = createPinia()
