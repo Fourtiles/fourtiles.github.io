@@ -61,8 +61,8 @@ jobs:
     - name: Install dependencies
       run: yarn install
     - name: Run ESLint
-      run: yarn lint
+      run: yarn lint:eslint
     - name: Type check
       run: yarn type-check
     - name: Run Stylelint
-      run: yarn stylelint
+      run: yarn lint:stylelint
