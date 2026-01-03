@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { concat, difference, intersection, isNull, pull, shuffle, union } from 'lodash-es'
 import gameBus from '@/emitters/gameBus'
+import * as Sentry from '@sentry/vue'
 
 export interface Game {
   fourtiles: string[]
@@ -68,18 +69,23 @@ const useGameStore = defineStore('game', {
 
       if (!this.allPossibleWords.includes(foundWord)) {
         gameBus.emit('wordNotRecognized', foundWord)
+        Sentry.metrics.count('word.submitted', 1, { attributes: { outcome: 'not_recognized' } })
         return false
       }
       if (this.foundWords.includes(foundWord)) {
         gameBus.emit('wordAlreadyFound', foundWord)
+        Sentry.metrics.count('word.submitted', 1, { attributes: { outcome: 'already_found' } })
         return false
       }
 
-      if (this.fourtileWords.includes(foundWord))
-        this.tilesUsedInFourtiles = union(this.tilesUsedInFourtiles, this.currentWord)
+      const isFourtile = this.fourtileWords.includes(foundWord)
+      if (isFourtile) this.tilesUsedInFourtiles = union(this.tilesUsedInFourtiles, this.currentWord)
 
       this.foundWords.push(foundWord)
       gameBus.emit('validWordFound', foundWord)
+      Sentry.metrics.count('word.submitted', 1, {
+        attributes: { outcome: 'valid', is_fourtile: isFourtile ? 'yes' : 'no' }
+      })
 
       if (this.allFourtilesFound && this.fourtileWords.includes(foundWord))
         gameBus.emit('allFourtilesFound')

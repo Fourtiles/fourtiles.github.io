@@ -22,14 +22,19 @@ import Spinner from '@/components/Spinner.vue'
 import Unicorn from '@/components/Unicorn.vue'
 import { fireworks, startRandomGame } from '@/functions'
 import addLocalStorageHooks from '@/stores/addLocalStorageHooks'
+import * as Sentry from '@sentry/vue'
 
 const game = useGameStore()
 
 const showUnicorn = ref(false)
 
 onMounted(async () => {
-  gameBus.on('allFourtilesFound', () => fireworks(5000))
+  gameBus.on('allFourtilesFound', () => {
+    Sentry.metrics.count('game.fourtiles_complete', 1)
+    fireworks(5000)
+  })
   gameBus.on('allWordsFound', () => {
+    Sentry.metrics.count('game.completed', 1)
     fireworks(10000)
     showUnicorn.value = true
     setTimeout(() => (showUnicorn.value = false), 10000)
