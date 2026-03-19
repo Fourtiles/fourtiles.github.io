@@ -14,13 +14,13 @@ jobs:
     name: Unit Tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           submodules: true
       - name: Enable Corepack
         run: corepack enable
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           cache: yarn
           node-version-file: .node-version
@@ -32,17 +32,17 @@ jobs:
     name: E2E Tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           submodules: true
       - name: Enable Corepack
         run: corepack enable
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           cache: yarn
           node-version-file: .node-version
-      - uses: cypress-io/github-action@v6
+      - uses: cypress-io/github-action@v7
         with:
           build: yarn build
           start: yarn vite preview --port 4173 --host 127.0.0.1
@@ -53,13 +53,13 @@ jobs:
     name: Linters
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           submodules: true
       - name: Enable Corepack
         run: corepack enable
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           cache: yarn
           node-version-file: .node-version
