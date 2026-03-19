@@ -9,28 +9,28 @@ Cypress.Commands.add('tiles', () =>
   cy
     .get('main')
     .invoke('attr', 'data-tiles')
-    .then((v) => (v ? v.split(',') : []))
+    .then((v) => (v ? v.split(',') : [])),
 )
 
 Cypress.Commands.add('words', () =>
   cy
     .get('main')
     .invoke('attr', 'data-words')
-    .then((v) => (v ? v.split(',') : []))
+    .then((v) => (v ? v.split(',') : [])),
 )
 
 Cypress.Commands.add('fourtiles', () =>
   cy
     .get('main')
     .invoke('attr', 'data-fourtiles')
-    .then((v) => (v ? v.split(',') : []))
+    .then((v) => (v ? v.split(',') : [])),
 )
 
 Cypress.Commands.add('foundWords', () =>
   cy
     .get('main')
     .invoke('attr', 'data-found-words')
-    .then((v) => (v ? v.split(',') : []))
+    .then((v) => (v ? v.split(',') : [])),
 )
 
 Cypress.Commands.add('tilesForWord', (word: string) => {

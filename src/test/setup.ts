@@ -7,13 +7,13 @@ if (
   Object.defineProperty(globalThis, 'localStorage', {
     value: {
       getItem: () => null,
-      setItem: () => {},
-      removeItem: () => {},
-      clear: () => {},
+      setItem: () => undefined,
+      removeItem: () => undefined,
+      clear: () => undefined,
       length: 0,
-      key: () => null
+      key: () => null,
     },
     writable: true,
-    configurable: true
+    configurable: true,
   })
 }

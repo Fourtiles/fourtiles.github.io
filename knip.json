@@ -1,0 +1,38 @@
+{
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "project": ["src/**/*.{ts,vue}"],
+  "entry": ["src/test/setup.ts", "src/**/*.spec.ts"],
+  "ignoreExportsUsedInFile": true,
+  "rules": {
+    "exports": "warn"
+  },
+  "ignoreDependencies": [
+    "@vue/compiler-dom",
+    "@vue/server-renderer",
+    "@vue/test-utils",
+    "postcss",
+    "setimmediate",
+    "@types/setimmediate",
+    "eslint",
+    "jiti",
+    "npm-run-all2",
+    "oxlint",
+    "start-server-and-test",
+    "stylelint",
+    "vue-eslint-parser",
+    "vue-tsc"
+  ],
+  "ignoreBinaries": [
+    "run-p",
+    "vite",
+    "prettier",
+    "eslint",
+    "stylelint",
+    "oxlint",
+    "knip",
+    "start-server-and-test",
+    "vitest",
+    "vue-tsc"
+  ],
+  "ignore": ["vitest.config.ts"]
+}

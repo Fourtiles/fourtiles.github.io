@@ -37,7 +37,7 @@ const showAllWords = ref(false)
 
 const numWordsRemaining = computed(() => Intl.NumberFormat().format(game.numWordsRemaining))
 const wordsToShow = computed(() =>
-  sortBy(showAllWords.value ? game.allPossibleWords : game.foundWords, identity)
+  sortBy(showAllWords.value ? game.allPossibleWords : game.foundWords, identity),
 )
 const noFoundWords = computed(() => game.foundWords.length === 0)
 </script>

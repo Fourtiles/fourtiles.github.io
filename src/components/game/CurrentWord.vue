@@ -6,7 +6,7 @@
       :class="{
         'word-already-found': wordAlreadyFound,
         'unknown-word': unknownWord,
-        'valid-word': validWord
+        'valid-word': validWord,
       }"
     >
       <Tile
@@ -49,7 +49,7 @@ const unknownWord = ref(false)
 const validWord = ref(false)
 
 const animationInProgress = computed(
-  () => wordAlreadyFound.value || unknownWord.value || validWord.value
+  () => wordAlreadyFound.value || unknownWord.value || validWord.value,
 )
 
 onMounted(() => {

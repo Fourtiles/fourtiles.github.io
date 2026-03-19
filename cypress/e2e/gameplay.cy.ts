@@ -56,14 +56,14 @@ describe('Gameplay', () => {
 
     it('pushes the fourtile to the bottom', function () {
       cy.findAllByTestId('tile').should((tiles) =>
-        tiles.text().endsWith(this.fourtileTiles!.join(''))
+        tiles.text().endsWith(this.fourtileTiles!.join('')),
       )
     })
 
     it('shuffles the board (except for fourtile tiles) when clicking Shuffle', function () {
       cy.findByLabelText('Shuffle').click()
       cy.findAllByTestId('tile').should((tiles) =>
-        tiles.text().endsWith(this.fourtileTiles!.join(''))
+        tiles.text().endsWith(this.fourtileTiles!.join('')),
       )
     })
   })
@@ -92,7 +92,7 @@ describe('Gameplay', () => {
 
     it('pushes the fourtile to the bottom', function () {
       cy.findAllByTestId('tile').should((tiles) =>
-        tiles.text().endsWith(this.fourtileTiles2!.join('') + this.fourtileTiles1!.join(''))
+        tiles.text().endsWith(this.fourtileTiles2!.join('') + this.fourtileTiles1!.join('')),
       )
     })
   })
@@ -104,7 +104,7 @@ describe('Gameplay', () => {
         .then((fourtiles) => {
           fourtiles!.forEach((fourtile) => {
             cy.tilesForWord(fourtile).then((tiles) =>
-              tiles!.forEach((tile) => cy.findByRole('button', { name: tile }).click())
+              tiles!.forEach((tile) => cy.findByRole('button', { name: tile }).click()),
             )
             cy.findByRole('button', { name: 'Add' }).click()
             cy.findByTestId('current-word').should('be.empty')
@@ -130,7 +130,7 @@ describe('Gameplay', () => {
       cy.words().then((words) => {
         words!.forEach((words) => {
           cy.tilesForWord(words).then((tiles) =>
-            tiles!.forEach((tile) => cy.findByRole('button', { name: tile }).click())
+            tiles!.forEach((tile) => cy.findByRole('button', { name: tile }).click()),
           )
           cy.findByRole('button', { name: 'Add' }).click()
           cy.findByTestId('current-word').should('be.empty')

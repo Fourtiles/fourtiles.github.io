@@ -29,14 +29,16 @@ const props = withDefaults(
   {
     path: 'M80 0C80 0 84.2846 41.2925 101.496 58.504C118.707 75.7154 160 80 160 80C160 80 118.707 84.2846 101.496 101.496C84.2846 118.707 80 160 80 160C80 160 75.7154 118.707 58.504 101.496C41.2925 84.2846 0 80 0 80C0 80 41.2925 75.7154 58.504 58.504C75.7154 41.2925 80 0 80 0Z',
     color: 'hsl(50deg, 100%, 50%)',
-    active: true
-  }
+    active: true,
+  },
 )
 
 const instances = ref<SparkleProps[]>([])
 const wrapper = ref<HTMLElement | null>(null)
 
-onMounted(() => tick())
+onMounted(() => {
+  tick()
+})
 
 function generateSparkle() {
   return {
@@ -46,11 +48,11 @@ function generateSparkle() {
     size: random(10, 20),
     style: {
       // Pick a random spot in the available space
-      top: random(0, 100) + '%',
-      left: random(0, 100) + '%',
+      top: `${random(0, 100).toString()}%`,
+      left: `${random(0, 100).toString()}%`,
       // Float sparkles above sibling content
-      zIndex: random(1, 3).toString()
-    }
+      zIndex: random(1, 3).toString(),
+    },
   }
 }
 
@@ -65,7 +67,7 @@ function addSparkle() {
     appliedStyle: sparkle.style,
     appliedKey: sparkle.id,
     createdAt: sparkle.createdAt,
-    path: sparklePath
+    path: sparklePath,
   })
 }
 

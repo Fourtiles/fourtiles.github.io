@@ -1,41 +1,79 @@
+import js from '@eslint/js'
+import tseslint from 'typescript-eslint'
 import pluginVue from 'eslint-plugin-vue'
-import vueTsEslintConfig from '@vue/eslint-config-typescript'
-import pluginVitest from '@vitest/eslint-plugin'
-import pluginCypress from 'eslint-plugin-cypress/flat'
-import skipFormatting from '@vue/eslint-config-prettier/skip-formatting'
 
-export default [
+export default tseslint.config(
   {
-    name: 'app/files-to-lint',
-    files: ['**/*.{ts,mts,tsx,vue}'],
+    ignores: ['dist', 'node_modules', '.yarn', '.pnp.cjs', '.pnp.loader.mjs', 'coverage'],
   },
-
+  js.configs.recommended,
+  ...tseslint.configs.strictTypeChecked,
+  ...tseslint.configs.stylisticTypeChecked,
+  ...pluginVue.configs['flat/strongly-recommended'],
   {
-    name: 'app/files-to-ignore',
-    ignores: ['**/dist/**', '**/dist-ssr/**', '**/coverage/**'],
+    linterOptions: {
+      reportUnusedDisableDirectives: 'off',
+    },
+    languageOptions: {
+      parserOptions: {
+        projectService: {
+          allowDefaultProject: ['cypress/support/*.ts', 'cypress/support/*.d.ts'],
+        },
+        tsconfigRootDir: import.meta.dirname,
+        extraFileExtensions: ['.vue'],
+      },
+    },
+    rules: {
+      'no-undef': 'off',
+    },
   },
-
-  ...pluginVue.configs['flat/recommended'],
-  ...vueTsEslintConfig(),
-
   {
     files: ['**/*.vue'],
+    languageOptions: {
+      parserOptions: { parser: tseslint.parser },
+    },
     rules: {
+      'vue/html-self-closing': 'off',
+      'vue/singleline-html-element-content-newline': 'off',
+      'vue/max-attributes-per-line': 'off',
+      'vue/html-closing-bracket-newline': 'off',
+      'vue/html-indent': 'off',
+      'vue/multiline-html-element-content-newline': 'off',
+      'vue/first-attribute-linebreak': 'off',
       'vue/multi-word-component-names': 'off',
     },
   },
-
   {
-    ...pluginVitest.configs.recommended,
-    files: ['src/**/__tests__/*'],
+    files: ['*.config.ts', '*.config.js', '*.config.mjs'],
+    ...tseslint.configs.disableTypeChecked,
   },
-
   {
-    ...pluginCypress.configs.recommended,
-    files: [
-      'cypress/e2e/**/*.{cy,spec}.{js,ts,jsx,tsx}',
-      'cypress/support/**/*.{js,ts,jsx,tsx}'
-    ],
+    files: ['env.d.ts'],
+    rules: {
+      '@typescript-eslint/no-empty-object-type': 'off',
+      '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/triple-slash-reference': 'off',
+    },
   },
-  skipFormatting,
-]
+  {
+    files: ['**/*.spec.ts'],
+    rules: {
+      '@typescript-eslint/no-non-null-assertion': 'off',
+      '@typescript-eslint/no-unsafe-member-access': 'off',
+    },
+  },
+  {
+    files: ['cypress/**/*.ts', 'cypress/**/*.d.ts'],
+    rules: {
+      '@typescript-eslint/no-non-null-assertion': 'off',
+      '@typescript-eslint/no-misused-promises': 'off',
+      '@typescript-eslint/no-unsafe-argument': 'off',
+      '@typescript-eslint/no-unsafe-call': 'off',
+      '@typescript-eslint/no-unsafe-member-access': 'off',
+      '@typescript-eslint/restrict-plus-operands': 'off',
+      '@typescript-eslint/no-floating-promises': 'off',
+      '@typescript-eslint/no-unnecessary-type-assertion': 'off',
+      '@typescript-eslint/no-confusing-void-expression': 'off',
+    },
+  },
+)

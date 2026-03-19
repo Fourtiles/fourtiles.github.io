@@ -25,7 +25,7 @@ const props = withDefaults(
     forceSolid?: boolean
     invalid?: boolean
   }>(),
-  { forceDisplay: false, invalid: false, forceSolid: false }
+  { forceDisplay: false, invalid: false, forceSolid: false },
 )
 
 const game = useGameStore()
@@ -33,7 +33,7 @@ const game = useGameStore()
 const inUse = computed(() => game.currentWord.includes(props.tile))
 const shouldDisplay = computed(() => props.forceDisplay || !inUse.value)
 const usedInFourtile = computed(
-  () => !props.forceSolid && game.tilesUsedInFourtiles.includes(props.tile)
+  () => !props.forceSolid && game.tilesUsedInFourtiles.includes(props.tile),
 )
 
 function toggleWord() {

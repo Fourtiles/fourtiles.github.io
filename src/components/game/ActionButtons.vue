@@ -32,7 +32,7 @@ import { computed } from 'vue'
 const game = useGameStore()
 
 const addFoundWordColor = computed(() =>
-  game.currentWord.length === 0 ? 'var(--color-border)' : 'var(--color-brat)'
+  game.currentWord.length === 0 ? 'var(--color-border)' : 'var(--color-brat)',
 )
 </script>
 

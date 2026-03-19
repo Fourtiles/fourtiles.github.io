@@ -28,7 +28,7 @@ const game = useGameStore()
 
 const showUnicorn = ref(false)
 
-onMounted(async () => {
+onMounted(() => {
   gameBus.on('allFourtilesFound', () => {
     Sentry.metrics.count('game.fourtiles_complete', 1)
     fireworks(5000)
@@ -37,11 +37,13 @@ onMounted(async () => {
     Sentry.metrics.count('game.completed', 1)
     fireworks(10000)
     showUnicorn.value = true
-    setTimeout(() => (showUnicorn.value = false), 10000)
+    setTimeout(() => {
+      showUnicorn.value = false
+    }, 10000)
   })
 
   addLocalStorageHooks()
-  if (!game.game) await startRandomGame()
+  if (!game.game) startRandomGame()
 })
 </script>
 

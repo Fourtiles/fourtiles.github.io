@@ -15,7 +15,7 @@ const useGameStore = defineStore('game', {
     tiles: [] as string[],
     foundWords: [] as string[],
     tilesUsedInFourtiles: [] as string[],
-    currentWord: [] as string[]
+    currentWord: [] as string[],
   }),
 
   getters: {
@@ -45,7 +45,7 @@ const useGameStore = defineStore('game', {
     },
     numFourtilesFound(state): number {
       return intersection(state.foundWords, this.fourtileWords).length
-    }
+    },
   },
 
   actions: {
@@ -56,7 +56,7 @@ const useGameStore = defineStore('game', {
         tiles: shuffle(newGame.tiles),
         foundWords: [],
         tilesUsedInFourtiles: [],
-        currentWord: []
+        currentWord: [],
       })
     },
 
@@ -84,7 +84,7 @@ const useGameStore = defineStore('game', {
       this.foundWords.push(foundWord)
       gameBus.emit('validWordFound', foundWord)
       Sentry.metrics.count('word.submitted', 1, {
-        attributes: { outcome: 'valid', is_fourtile: isFourtile ? 'yes' : 'no' }
+        attributes: { outcome: 'valid', is_fourtile: isFourtile ? 'yes' : 'no' },
       })
 
       if (this.allFourtilesFound && this.fourtileWords.includes(foundWord))
@@ -117,8 +117,8 @@ const useGameStore = defineStore('game', {
 
     sortTiles() {
       this.tiles = concat(this.tilesNotUsedInFourtiles, this.tilesUsedInFourtiles)
-    }
-  }
+    },
+  },
 })
 
 export default useGameStore

@@ -8,8 +8,8 @@ describe('FoundWords', () => {
     it('shows “No words found yet”', () => {
       render(FoundWords, {
         global: {
-          plugins: [createTestingPinia()]
-        }
+          plugins: [createTestingPinia()],
+        },
       })
 
       expect(screen.getByTestId('found-words').textContent).toContain('No words found yet.')
@@ -24,12 +24,12 @@ describe('FoundWords', () => {
             createTestingPinia({
               initialState: {
                 game: {
-                  foundWords: ['cat', 'dog', 'fish']
-                }
-              }
-            })
-          ]
-        }
+                  foundWords: ['cat', 'dog', 'fish'],
+                },
+              },
+            }),
+          ],
+        },
       })
 
       expect(screen.getByTestId('found-words').textContent).toContain('catdogfish')
@@ -46,13 +46,13 @@ describe('FoundWords', () => {
                 game: {
                   game: {
                     fourtiles: ['appendix', 'billabong'],
-                    otherWords: ['cat', 'dog', 'fish']
-                  }
-                }
-              }
-            })
-          ]
-        }
+                    otherWords: ['cat', 'dog', 'fish'],
+                  },
+                },
+              },
+            }),
+          ],
+        },
       })
 
       const showAll = await screen.findByText('Show all words')

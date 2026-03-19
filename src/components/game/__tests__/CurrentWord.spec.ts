@@ -10,17 +10,17 @@ describe('CurrentWord', () => {
     it('sets the word-already-found class', async () => {
       render(CurrentWord, {
         global: {
-          plugins: [createTestingPinia()]
-        }
+          plugins: [createTestingPinia()],
+        },
       })
 
       expect(
-        screen.getByTestId('current-word').classList.contains('word-already-found')
+        screen.getByTestId('current-word').classList.contains('word-already-found'),
       ).toBeFalsy()
       gameBus.emit('wordAlreadyFound', 'test')
       await nextTick()
       expect(
-        screen.getByTestId('current-word').classList.contains('word-already-found')
+        screen.getByTestId('current-word').classList.contains('word-already-found'),
       ).toBeTruthy()
     })
   })
@@ -29,8 +29,8 @@ describe('CurrentWord', () => {
     it('sets the unknown-word class', async () => {
       render(CurrentWord, {
         global: {
-          plugins: [createTestingPinia()]
-        }
+          plugins: [createTestingPinia()],
+        },
       })
 
       expect(screen.getByTestId('current-word').classList.contains('unknown-word')).toBeFalsy()
@@ -43,8 +43,8 @@ describe('CurrentWord', () => {
     it('sets the valid-word class', async () => {
       render(CurrentWord, {
         global: {
-          plugins: [createTestingPinia()]
-        }
+          plugins: [createTestingPinia()],
+        },
       })
 
       expect(screen.getByTestId('current-word').classList.contains('valid-word')).toBeFalsy()

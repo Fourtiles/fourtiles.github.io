@@ -6,5 +6,7 @@ export default function addLocalStorageHooks() {
   const savedState = localStorage.getItem('gameStore')
   if (savedState) game.$patch(JSON.parse(savedState))
 
-  game.$subscribe((_, state) => localStorage.setItem('gameStore', JSON.stringify(state)))
+  game.$subscribe((_, state) => {
+    localStorage.setItem('gameStore', JSON.stringify(state))
+  })
 }

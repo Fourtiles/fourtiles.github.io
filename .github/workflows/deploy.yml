@@ -28,25 +28,27 @@ jobs:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-    - name: Setup pages
-      uses: actions/configure-pages@v4
-    - name: Set up Node.js
-      uses: actions/setup-node@v4
-      with:
-        cache: yarn
-        node-version-file: .nvmrc
-    - name: Install dependencies
-      run: yarn install
-    - name: Build
-      run: yarn build
-      env:
-        VITE_SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
-    - name: Upload
-      uses: actions/upload-pages-artifact@v3
-      with:
-        path: "dist/"
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup pages
+        uses: actions/configure-pages@v4
+      - name: Enable Corepack
+        run: corepack enable
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          cache: yarn
+          node-version-file: .node-version
+      - name: Install dependencies
+        run: yarn install
+      - name: Build
+        run: yarn build
+        env:
+          VITE_SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+      - name: Upload
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'dist/'
 
   deploy:
     environment:
@@ -55,28 +57,28 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
-    - name: Download artifact
-      uses: actions/download-artifact@v4
-      with:
-        name: github-pages
-    - name: Extract artifact
-      run: |
-        mkdir -p dist
-        tar -xvf artifact.tar -C dist
-    - name: Deploy to GitHub Pages
-      id: deployment
-      uses: actions/deploy-pages@v4
-    - name: Create Sentry release
-      uses: getsentry/action-release@v3
-      env:
-        SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-        SENTRY_ORG: timcodes
-        SENTRY_PROJECT: fourtiles
-      with:
-        environment: production
-        release: ${{ github.sha }}
-        sourcemaps: "./dist"
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: github-pages
+      - name: Extract artifact
+        run: |
+          mkdir -p dist
+          tar -xvf artifact.tar -C dist
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+      - name: Create Sentry release
+        uses: getsentry/action-release@v3
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: timcodes
+          SENTRY_PROJECT: fourtiles
+        with:
+          environment: production
+          release: ${{ github.sha }}
+          sourcemaps: './dist'

@@ -42,7 +42,7 @@ logic. Run unit tests with `yarn run test:unit`.
 
 Cypress end-to-end tests are provided that test the entire game flow. Run
 end-to-end tests with `yarn run test:e2e:dev` (interactive environment) or
-`yarn run test:e2e` (command-line output only). 
+`yarn run test:e2e` (command-line output only).
 
 ## Linting
 

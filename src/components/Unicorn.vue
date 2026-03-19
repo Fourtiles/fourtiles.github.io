@@ -236,6 +236,7 @@
     border-bottom-right-radius: 75px;
     border-bottom-left-radius: 50px;
 
+    /* stylelint-disable-next-line no-descending-specificity */
     &::after {
       position: absolute;
       top: -20px;
@@ -248,6 +249,7 @@
       border-bottom-left-radius: 60px;
     }
 
+    /* stylelint-disable-next-line no-descending-specificity */
     &::before {
       position: absolute;
       top: -20px;
@@ -275,6 +277,7 @@
       -20px 72px var(--r-blue);
     animation: tail 1.5s linear infinite;
 
+    /* stylelint-disable-next-line no-descending-specificity */
     &::after {
       position: relative;
       right: 0;
@@ -287,6 +290,7 @@
         10px 54px var(--blue-bg);
     }
 
+    /* stylelint-disable-next-line no-descending-specificity */
     &::before {
       position: absolute;
       bottom: -140px;
