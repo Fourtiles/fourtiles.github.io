@@ -17,7 +17,11 @@ export default tseslint.config(
     languageOptions: {
       parserOptions: {
         projectService: {
-          allowDefaultProject: ['cypress/support/*.ts', 'cypress/support/*.d.ts'],
+          allowDefaultProject: [
+            'cypress/support/*.ts',
+            'cypress/support/*.d.ts',
+            'cypress/pages/*.ts',
+          ],
         },
         tsconfigRootDir: import.meta.dirname,
         extraFileExtensions: ['.vue'],
@@ -74,6 +78,7 @@ export default tseslint.config(
       '@typescript-eslint/no-floating-promises': 'off',
       '@typescript-eslint/no-unnecessary-type-assertion': 'off',
       '@typescript-eslint/no-confusing-void-expression': 'off',
+      '@typescript-eslint/no-unsafe-return': 'off',
     },
   },
 )
