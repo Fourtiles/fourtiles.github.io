@@ -17,11 +17,7 @@ export default tseslint.config(
     languageOptions: {
       parserOptions: {
         projectService: {
-          allowDefaultProject: [
-            'cypress/support/*.ts',
-            'cypress/support/*.d.ts',
-            'cypress/pages/*.ts',
-          ],
+          allowDefaultProject: ['e2e/*.ts', 'e2e/pages/*.ts'],
         },
         tsconfigRootDir: import.meta.dirname,
         extraFileExtensions: ['.vue'],
@@ -67,18 +63,10 @@ export default tseslint.config(
     },
   },
   {
-    files: ['cypress/**/*.ts', 'cypress/**/*.d.ts'],
+    files: ['e2e/**/*.ts'],
     rules: {
       '@typescript-eslint/no-non-null-assertion': 'off',
-      '@typescript-eslint/no-misused-promises': 'off',
-      '@typescript-eslint/no-unsafe-argument': 'off',
-      '@typescript-eslint/no-unsafe-call': 'off',
       '@typescript-eslint/no-unsafe-member-access': 'off',
-      '@typescript-eslint/restrict-plus-operands': 'off',
-      '@typescript-eslint/no-floating-promises': 'off',
-      '@typescript-eslint/no-unnecessary-type-assertion': 'off',
-      '@typescript-eslint/no-confusing-void-expression': 'off',
-      '@typescript-eslint/no-unsafe-return': 'off',
     },
   },
 )

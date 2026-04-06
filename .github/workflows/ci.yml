@@ -42,13 +42,14 @@ jobs:
         with:
           cache: yarn
           node-version-file: .nvmrc
-      - uses: cypress-io/github-action@v7
-        with:
-          build: yarn build
-          start: yarn vite preview --port 4173 --host 127.0.0.1
-          command: yarn cypress run --record
-        env:
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+      - name: Install dependencies
+        run: yarn install
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+      - name: Build
+        run: yarn build
+      - name: Run e2e tests
+        run: yarn test:e2e
   lint:
     name: Linters
     runs-on: ubuntu-latest

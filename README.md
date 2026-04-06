@@ -40,8 +40,8 @@ all fourtiles or completes the game.
 Unit tests are provided for only those components with sufficiently complex
 logic. Run unit tests with `yarn run test:unit`.
 
-Cypress end-to-end tests are provided that test the entire game flow. Run
-end-to-end tests with `yarn run test:e2e:dev` (interactive environment) or
+Playwright end-to-end tests are provided that test the entire game flow. Run
+end-to-end tests with `yarn run test:e2e:dev` (interactive UI) or
 `yarn run test:e2e` (command-line output only).
 
 ## Linting

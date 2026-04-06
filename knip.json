@@ -17,7 +17,6 @@
     "jiti",
     "npm-run-all2",
     "oxlint",
-    "start-server-and-test",
     "stylelint",
     "vue-eslint-parser",
     "vue-tsc"
@@ -30,7 +29,7 @@
     "stylelint",
     "oxlint",
     "knip",
-    "start-server-and-test",
+    "playwright",
     "vitest",
     "vue-tsc"
   ],
