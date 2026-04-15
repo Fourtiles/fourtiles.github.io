@@ -4,35 +4,91 @@
     <meta charset="UTF-8" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#8ace00" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta
+      http-equiv="Permissions-Policy"
+      content="camera=(), microphone=(), geolocation=(), interest-cohort=()"
+    />
 
     <!-- Primary Meta Tags -->
-    <title>fourtiles</title>
-    <meta name="title" content="fourtiles" />
+    <title>Fourtiles</title>
+    <meta name="title" content="Fourtiles" />
     <meta name="description" content="A fun word-finding game." />
+    <meta name="author" content="Tim Morgan and Wenting" />
+    <link rel="canonical" href="https://fourtiles.github.io/" />
+
+    <!-- Apple Web App -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Fourtiles" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://fourtiles.github.io/" />
-    <meta property="og:title" content="fourtiles" />
+    <meta property="og:title" content="Fourtiles" />
     <meta property="og:description" content="A fun word-finding game." />
     <meta property="og:image" content="/apple-touch-icon-iphone-retina.png" />
+    <meta property="og:image:alt" content="Fourtiles app icon" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary" />
     <meta property="twitter:url" content="https://fourtiles.github.io/" />
-    <meta property="twitter:title" content="fourtiles" />
+    <meta property="twitter:title" content="Fourtiles" />
     <meta property="twitter:description" content="A fun word-finding game." />
     <meta property="twitter:image" content="/apple-touch-icon-iphone-retina.png" />
+    <meta property="twitter:image:alt" content="Fourtiles app icon" />
 
     <link rel="icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" href="apple-touch-icon-iphone.png" />
-    <link rel="apple-touch-icon" sizes="152x152" href="apple-touch-icon-ipad.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-iphone-retina.png" />
-    <link rel="apple-touch-icon" sizes="167x167" href="apple-touch-icon-ipad-retina.png" />
-    <link rel="mask-icon" href="pinned-tab.svg" color="#8ace00" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon-iphone.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-ipad.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-iphone-retina.png" />
+    <link rel="apple-touch-icon" sizes="167x167" href="/apple-touch-icon-ipad-retina.png" />
+    <link rel="mask-icon" href="/pinned-tab.svg" color="#8ace00" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Fourtiles",
+        "description": "A fun word-finding game.",
+        "url": "https://fourtiles.github.io/",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires JavaScript and a modern web browser.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "author": [
+          {
+            "@type": "Person",
+            "name": "Tim Morgan",
+            "url": "https://github.com/RISCfuture"
+          },
+          {
+            "@type": "Person",
+            "name": "Wenting"
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="app"></div>
+    <noscript>
+      <div style="padding: 2em; font-family: arial, sans-serif; text-align: center">
+        <h1>Fourtiles requires JavaScript</h1>
+        <p>
+          This word-finding game needs JavaScript to run. Please enable JavaScript in your browser
+          and reload the page.
+        </p>
+      </div>
+    </noscript>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

@@ -1,0 +1,41 @@
+{
+  "name": "Fourtiles",
+  "short_name": "Fourtiles",
+  "description": "A fun word-finding game.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#8ace00",
+  "background_color": "#f3f4f6",
+  "categories": ["games"],
+  "icons": [
+    {
+      "src": "/apple-touch-icon-iphone.png",
+      "sizes": "120x120",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon-ipad.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon-ipad-retina.png",
+      "sizes": "167x167",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon-iphone-retina.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-touch-icon-iphone-retina.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

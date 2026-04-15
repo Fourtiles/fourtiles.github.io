@@ -2,7 +2,7 @@ import type { Page } from '@playwright/test'
 import { difference, sample, without } from 'lodash-es'
 
 async function getDataAttr(page: Page, attr: string): Promise<string[]> {
-  const value = await page.locator('main').getAttribute(attr)
+  const value = await page.getByTestId('game-board').getAttribute(attr)
   return value ? value.split(',') : []
 }
 

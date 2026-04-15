@@ -58,3 +58,34 @@ a[disabled='true'] {
 .muted {
   color: var(--color-text-muted);
 }
+
+/* Visually hidden until focused: skip-to-content link for keyboard users */
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  padding: var(--space-sm) var(--space-md);
+  font-weight: bold;
+  color: var(--color-text);
+  background-color: var(--color-brat);
+  border: 2px solid var(--color-text);
+  border-radius: 0 0 var(--border-radius-sm) 0;
+  transform: translateY(-100%);
+}
+
+.skip-link:focus {
+  outline: none;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.001ms !important;
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}

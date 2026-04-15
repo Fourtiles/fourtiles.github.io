@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fourtiles</title>
+    <script>
+      // GitHub Pages SPA fallback: redirect any 404 to the root so the SPA can
+      // handle routing client-side. Preserves path/query/hash for client routers.
+      ;(function () {
+        var l = window.location
+        var redirect =
+          l.protocol +
+          '//' +
+          l.hostname +
+          (l.port ? ':' + l.port : '') +
+          '/?p=' +
+          encodeURIComponent(l.pathname.slice(1)) +
+          (l.search ? '&q=' + encodeURIComponent(l.search.slice(1)) : '') +
+          l.hash
+        l.replace(redirect)
+      })()
+    </script>
+  </head>
+  <body>
+    <noscript>
+      <h1>Page not found</h1>
+      <p><a href="/">Return to Fourtiles</a></p>
+    </noscript>
+  </body>
+</html>

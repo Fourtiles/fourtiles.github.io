@@ -1,9 +1,13 @@
 <template>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
   <Spinner v-if="game.isLoading" />
 
   <div v-else id="container">
     <HeaderSection />
-    <GameSection />
+    <main id="main-content">
+      <GameSection />
+    </main>
     <FooterSection />
   </div>
   <div v-if="showUnicorn" id="unicorn">

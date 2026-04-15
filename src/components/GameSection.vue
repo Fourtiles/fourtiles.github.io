@@ -1,5 +1,7 @@
 <template>
-  <main
+  <div
+    class="game-board"
+    data-testid="game-board"
     :data-tiles="game.tiles.join(',')"
     :data-words="game.allPossibleWords.join(',')"
     :data-fourtiles="game.fourtileWords.join(',')"
@@ -8,7 +10,7 @@
     <div class="fourtile-stars"><FourtileStars /></div>
     <div class="word-list"><FoundWords /></div>
     <div class="tiles"><Tiles /><ActionButtons /></div>
-  </main>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -22,13 +24,13 @@ const game = useGameStore()
 </script>
 
 <style scoped>
-main {
+.game-board {
   display: grid;
   gap: var(--space-md) var(--space-md);
 }
 
 @media (aspect-ratio >= 1/1) {
-  main {
+  .game-board {
     grid-template:
       'fourtile-stars fourtile-stars' min-content
       'word-list      tiles' 1fr
@@ -40,7 +42,7 @@ main {
 }
 
 @media (aspect-ratio < 1/1) {
-  main {
+  .game-board {
     grid-template:
       'fourtile-stars' min-content
       'tiles' min-content
@@ -50,7 +52,7 @@ main {
   }
 }
 
-main > div {
+.game-board > div {
   padding: 0 var(--space-md);
 }
 
