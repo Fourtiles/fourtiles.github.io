@@ -39,6 +39,7 @@ import Tile from '@/components/game/Tile.vue'
 import gameBus from '@/emitters/gameBus'
 import { computed, onMounted, ref } from 'vue'
 import Sparkles from '@/components/sparkles/Sparkles.vue'
+import { useTimeoutFn } from '@vueuse/core'
 
 const SPARKLE_COLORS = ['#ffbe0b', '#fb5607', '#ff006e', '#8338ec', '#3a86ff']
 
@@ -47,38 +48,59 @@ const game = useGameStore()
 const wordAlreadyFound = ref(false)
 const unknownWord = ref(false)
 const validWord = ref(false)
+const lastValidWord = ref('')
 
 const animationInProgress = computed(
   () => wordAlreadyFound.value || unknownWord.value || validWord.value,
 )
 
+const { start: startWordAlreadyFoundTimeout } = useTimeoutFn(
+  () => {
+    wordAlreadyFound.value = false
+    game.resetCurrentWord()
+  },
+  1000,
+  { immediate: false },
+)
+
+const { start: startUnknownWordTimeout } = useTimeoutFn(
+  () => {
+    unknownWord.value = false
+    game.resetCurrentWord()
+  },
+  1000,
+  { immediate: false },
+)
+
+const { start: startValidWordTimeout } = useTimeoutFn(
+  () => {
+    validWord.value = false
+    game.resetCurrentWord()
+    const word = lastValidWord.value
+    if (game.fourtileWords.includes(word)) {
+      if (game.allFourtilesFound) game.sortTiles()
+      else game.shuffleTiles()
+    }
+  },
+  500,
+  { immediate: false },
+)
+
 onMounted(() => {
   gameBus.on('wordAlreadyFound', () => {
     wordAlreadyFound.value = true
-    setTimeout(() => {
-      wordAlreadyFound.value = false
-      game.resetCurrentWord()
-    }, 1000)
+    startWordAlreadyFoundTimeout()
   })
 
   gameBus.on('wordNotRecognized', () => {
     unknownWord.value = true
-    setTimeout(() => {
-      unknownWord.value = false
-      game.resetCurrentWord()
-    }, 1000)
+    startUnknownWordTimeout()
   })
 
   gameBus.on('validWordFound', (word) => {
     validWord.value = true
-    setTimeout(() => {
-      validWord.value = false
-      game.resetCurrentWord()
-      if (game.fourtileWords.includes(word)) {
-        if (game.allFourtilesFound) game.sortTiles()
-        else game.shuffleTiles()
-      }
-    }, 500)
+    lastValidWord.value = word
+    startValidWordTimeout()
   })
 })
 </script>

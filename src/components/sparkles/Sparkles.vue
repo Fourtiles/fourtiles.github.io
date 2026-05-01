@@ -11,8 +11,9 @@
 
 <script setup lang="ts">
 import Sparkle from './Sparkle.vue'
-import { onMounted, ref } from 'vue'
+import { ref, watch } from 'vue'
 import { isArray, random, sample, uniqueId } from 'lodash-es'
+import { useIntervalFn } from '@vueuse/core'
 import type { SparkleProps } from '@/components/sparkles/types'
 
 /**
@@ -36,9 +37,19 @@ const props = withDefaults(
 const instances = ref<SparkleProps[]>([])
 const wrapper = ref<HTMLElement | null>(null)
 
-onMounted(() => {
-  tick()
-})
+const { pause, resume } = useIntervalFn(tick, 25, { immediate: props.active })
+
+watch(
+  () => props.active,
+  (active) => {
+    if (active) {
+      resume()
+    } else {
+      pause()
+      instances.value = []
+    }
+  },
+)
 
 function generateSparkle() {
   return {
@@ -72,9 +83,7 @@ function addSparkle() {
 }
 
 function tick() {
-  if (props.active) addSparkle()
-  else instances.value = []
-  setTimeout(tick, random(1, 50))
+  addSparkle()
 }
 </script>
 

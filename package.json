@@ -25,6 +25,7 @@
   "dependencies": {
     "@sentry/vue": "^10.45.0",
     "@tabler/icons-vue": "^3.40.0",
+    "@vueuse/core": "^14.3.0",
     "canvas-confetti": "^1.9.4",
     "lodash-es": "^4.17.23",
     "mitt": "^3.0.1",

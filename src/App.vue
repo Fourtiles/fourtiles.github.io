@@ -27,10 +27,19 @@ import Unicorn from '@/components/Unicorn.vue'
 import { fireworks, startRandomGame } from '@/functions'
 import addLocalStorageHooks from '@/stores/addLocalStorageHooks'
 import * as Sentry from '@sentry/vue'
+import { useTimeoutFn } from '@vueuse/core'
 
 const game = useGameStore()
 
 const showUnicorn = ref(false)
+
+const { start: startUnicornTimeout } = useTimeoutFn(
+  () => {
+    showUnicorn.value = false
+  },
+  10000,
+  { immediate: false },
+)
 
 onMounted(() => {
   gameBus.on('allFourtilesFound', () => {
@@ -41,9 +50,7 @@ onMounted(() => {
     Sentry.metrics.count('game.completed', 1)
     fireworks(10000)
     showUnicorn.value = true
-    setTimeout(() => {
-      showUnicorn.value = false
-    }, 10000)
+    startUnicornTimeout()
   })
 
   addLocalStorageHooks()

@@ -13,18 +13,21 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { ref } from 'vue'
+import { useTimeoutFn } from '@vueuse/core'
 import type { SparkleProps } from '@/components/sparkles/types'
 
 const props = defineProps<SparkleProps>()
 
 const isAlive = ref(true)
 
-onMounted(() => {
-  setTimeout(() => {
+useTimeoutFn(
+  () => {
     isAlive.value = false
-  }, 600)
-})
+  },
+  600,
+  { immediate: true },
+)
 </script>
 
 <style scoped>

@@ -1,12 +1,13 @@
+import { useLocalStorage } from '@vueuse/core'
 import useGameStore from '@/stores/game'
 
 export default function addLocalStorageHooks() {
   const game = useGameStore()
+  const stored = useLocalStorage('gameStore', game.$state, { mergeDefaults: true })
 
-  const savedState = localStorage.getItem('gameStore')
-  if (savedState) game.$patch(JSON.parse(savedState))
+  game.$patch(stored.value)
 
   game.$subscribe((_, state) => {
-    localStorage.setItem('gameStore', JSON.stringify(state))
+    stored.value = state
   })
 }
