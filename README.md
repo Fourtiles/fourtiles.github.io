@@ -18,9 +18,9 @@ https://github.com/Fourtiles/GameGenerator.
 
 ## Installation
 
-Fourtiles is a Vue.js 3 application using Yarn as its package manager. After
-cloning the repository, simply run `yarn install` to install all dependencies.
-The game can be run with `yarn run dev`.
+Fourtiles is a Vue.js 3 application using pnpm as its package manager. After
+cloning the repository, simply run `pnpm install` to install all dependencies.
+The game can be run with `pnpm dev`.
 
 ## Architecture
 
@@ -42,21 +42,21 @@ all fourtiles or completes the game.
 ## Testing
 
 Unit tests are provided for only those components with sufficiently complex
-logic. Run unit tests with `yarn run test:unit`.
+logic. Run unit tests with `pnpm test:unit`.
 
 Playwright end-to-end tests are provided that test the entire game flow. Run
-end-to-end tests with `yarn run test:e2e:dev` (interactive UI) or
-`yarn run test:e2e` (command-line output only).
+end-to-end tests with `pnpm test:e2e:dev` (interactive UI) or
+`pnpm test:e2e` (command-line output only).
 
 ## Linting
 
-`yarn run lint` will lint all JavaScript and TypeScript files.
-`yarn run type-check` will type-check all TypeScript files. `yarn run format`
+`pnpm lint` will lint all JavaScript and TypeScript files.
+`pnpm type-check` will type-check all TypeScript files. `pnpm format`
 will reformat all files according to the Prettier ruleset.
 
 ## Deployment
 
 CI and deployment is managed automatically by GitHub Actions. When the `main`
 branch is pushed, the `ci.yml` flow runs all linter and type checks, and if
-those pass, then Actions runs `yarn build` to generate the production build. The
+those pass, then Actions runs `pnpm build` to generate the production build. The
 production build is then automatically uploaded to GitHub Pages for hosting.

@@ -4,7 +4,7 @@ import pluginVue from 'eslint-plugin-vue'
 
 export default tseslint.config(
   {
-    ignores: ['dist', 'node_modules', '.yarn', '.pnp.cjs', '.pnp.loader.mjs', 'coverage'],
+    ignores: ['dist', 'node_modules', 'coverage'],
   },
   js.configs.recommended,
   ...tseslint.configs.strictTypeChecked,
