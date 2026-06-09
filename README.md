@@ -14,7 +14,7 @@ are constructible from five or more tiles.
 
 Approximately 4,000 possible games are pre-generated and stored in
 `src/data/games.json`. The tool that generates these games is at
-https://github.com/Fourtiles/GameGenerator.
+<https://github.com/Fourtiles/GameGenerator>.
 
 ## Installation
 
