@@ -6,18 +6,13 @@ import {
   fourtiles,
   tiles,
   words,
-  tilesForWordFromPage,
 } from './game-helpers'
+import { playWords } from './game-flows'
 
 test.describe('Gameplay', () => {
   let wordsRemaining: number
 
-  test.beforeEach(async ({ page, foundWordsPanel }) => {
-    await page.goto('/')
-    await page.evaluate(() => {
-      localStorage.clear()
-    })
-    await page.reload()
+  test.beforeEach(async ({ foundWordsPanel }) => {
     wordsRemaining = parseInt(await foundWordsPanel.getWordsRemaining().innerText(), 10)
   })
 
@@ -114,12 +109,7 @@ test.describe('Gameplay', () => {
 
     test.beforeEach(async ({ page, board }) => {
       fourtileWords = await fourtiles(page)
-      for (const fourtile of fourtileWords) {
-        const tiles = await tilesForWordFromPage(page, fourtile)
-        await board.clickTiles(tiles)
-        await board.clickAdd()
-        await expect(board.getCurrentWord()).toHaveText('')
-      }
+      await playWords(page, board, fourtileWords)
     })
 
     test('pops confetti', async ({ page }) => {
@@ -152,12 +142,7 @@ test.describe('Gameplay', () => {
 
     test.beforeEach(async ({ page, board }) => {
       const allWords = await words(page)
-      for (const word of allWords) {
-        const wordTiles = await tilesForWordFromPage(page, word)
-        await board.clickTiles(wordTiles)
-        await board.clickAdd()
-        await expect(board.getCurrentWord()).toHaveText('', { timeout: 10_000 })
-      }
+      await playWords(page, board, allWords, 10_000)
     })
 
     test('pops confetti and unicorns', async ({ page }) => {
