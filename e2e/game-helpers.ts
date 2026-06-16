@@ -1,5 +1,6 @@
-import type { Page } from '@playwright/test'
+import { expect, type Page } from '@playwright/test'
 import { difference, sample, without } from 'lodash-es'
+import type { GameBoardPage } from './pages/GameBoardPage'
 
 async function getDataAttr(page: Page, attr: string): Promise<string[]> {
   const value = await page.getByTestId('game-board').getAttribute(attr)
@@ -96,4 +97,37 @@ export async function tilesForWordFromPage(page: Page, word: string): Promise<st
   const result = tilesForWord(tileList, word)
   if (!result) throw new Error(`Could not form word "${word}" from tiles: [${tileList.join(', ')}]`)
   return result
+}
+
+interface PlayWordOptions {
+  /** Timeout in ms for the current-word-cleared synchronization after submitting. */
+  clearTimeout?: number
+}
+
+/**
+ * Plays a single word: resolves it to a tile sequence from the current board, taps those tiles,
+ * and submits, then waits for the current-word display to clear before returning.
+ */
+export async function playWord(
+  page: Page,
+  board: GameBoardPage,
+  word: string,
+  options: PlayWordOptions = {},
+): Promise<void> {
+  const wordTiles = await tilesForWordFromPage(page, word)
+  await board.clickTiles(wordTiles)
+  await board.clickAdd()
+  await expect(board.getCurrentWord()).toHaveText('', { timeout: options.clearTimeout })
+}
+
+/** Plays every word in order, waiting for the board to settle between each. */
+export async function playWords(
+  page: Page,
+  board: GameBoardPage,
+  wordList: string[],
+  options: PlayWordOptions = {},
+): Promise<void> {
+  for (const word of wordList) {
+    await playWord(page, board, word, options)
+  }
 }
