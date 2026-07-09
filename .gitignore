@@ -10,6 +10,8 @@ node_modules/
 dist/
 dist-ssr
 .env*
+!.env.example
+!.env.development
 *.local
 coverage/
 
@@ -20,3 +22,4 @@ coverage/
 /test-results/
 /playwright-report/
 /blob-report/
+.claude/settings.local.json
