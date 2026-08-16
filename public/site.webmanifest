@@ -12,29 +12,50 @@
   "icons": [
     {
       "src": "/apple-touch-icon-iphone.png",
+      "type": "image/png",
       "sizes": "120x120",
-      "type": "image/png"
+      "purpose": "any"
     },
     {
       "src": "/apple-touch-icon-ipad.png",
+      "type": "image/png",
       "sizes": "152x152",
-      "type": "image/png"
+      "purpose": "any"
     },
     {
       "src": "/apple-touch-icon-ipad-retina.png",
-      "sizes": "167x167",
-      "type": "image/png"
-    },
-    {
-      "src": "/apple-touch-icon-iphone-retina.png",
-      "sizes": "180x180",
       "type": "image/png",
+      "sizes": "167x167",
       "purpose": "any"
     },
     {
       "src": "/apple-touch-icon-iphone-retina.png",
-      "sizes": "180x180",
       "type": "image/png",
+      "sizes": "180x180",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
       "purpose": "maskable"
     }
   ]

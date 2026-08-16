@@ -16,7 +16,7 @@ const RELOAD_COOLDOWN_MS = 10 * 60 * 1000
  * still heals each time.
  */
 export function recoverFromPreloadErrors(): void {
-  globalThis.addEventListener('vite:preloadError', reloadOnce)
+  window.addEventListener('vite:preloadError', reloadOnce)
 }
 
 function reloadOnce(event: VitePreloadErrorEvent): void {
@@ -25,15 +25,15 @@ function reloadOnce(event: VitePreloadErrorEvent): void {
   // Suppresses Vite's rethrow: the reload is the recovery, so the rejection isn't worth
   // reporting. A failure that can't claim a reload stays unprevented and reaches Sentry.
   event.preventDefault()
-  globalThis.location.reload()
+  window.location.reload()
 }
 
 function claimReload(): boolean {
   try {
-    const lastReload = Number(globalThis.sessionStorage.getItem(RELOAD_KEY) ?? 0)
+    const lastReload = Number(window.sessionStorage.getItem(RELOAD_KEY) ?? 0)
     if (Number.isFinite(lastReload) && Date.now() - lastReload < RELOAD_COOLDOWN_MS) return false
 
-    globalThis.sessionStorage.setItem(RELOAD_KEY, String(Date.now()))
+    window.sessionStorage.setItem(RELOAD_KEY, String(Date.now()))
     return true
   } catch {
     // sessionStorage may be unavailable (private mode, etc.). With nowhere to record the attempt

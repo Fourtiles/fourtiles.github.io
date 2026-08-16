@@ -3,29 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fourtiles</title>
-    <script>
-      // GitHub Pages SPA fallback: redirect any 404 to the root so the SPA can
-      // handle routing client-side. Preserves path/query/hash for client routers.
-      ;(function () {
-        var l = window.location
-        var redirect =
-          l.protocol +
-          '//' +
-          l.hostname +
-          (l.port ? ':' + l.port : '') +
-          '/?p=' +
-          encodeURIComponent(l.pathname.slice(1)) +
-          (l.search ? '&q=' + encodeURIComponent(l.search.slice(1)) : '') +
-          l.hash
-        l.replace(redirect)
-      })()
-    </script>
+
+    <title>Page Not Found — Fourtiles</title>
+    <meta name="description" content="There is no page at this address." />
+    <meta name="robots" content="noindex" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#8ace00" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#8ace00" media="(prefers-color-scheme: dark)" />
+
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-iphone-retina.png" />
+    <link rel="mask-icon" href="/pinned-tab.svg" color="#8ace00" />
+
+    <!-- The zone's CSP grants 'unsafe-inline' to `style-src-attr` alone, so a
+         `<style>` element here would be blocked and the page would render
+         unstyled. The stylesheet is a sibling file that Vite copies out of
+         `public/` under a stable, unhashed name. -->
+    <link rel="stylesheet" href="/404.css" />
   </head>
+
   <body>
-    <noscript>
-      <h1>Page not found</h1>
-      <p><a href="/">Return to Fourtiles</a></p>
-    </noscript>
+    <main>
+      <h1>
+        <span class="code">404</span>
+        <span class="label">Page not found</span>
+      </h1>
+
+      <p class="lede">There’s no word at this address.</p>
+
+      <p><a class="button" href="/">Back to the game</a></p>
+    </main>
   </body>
 </html>
