@@ -11,6 +11,7 @@
     "build-only": "vite build",
     "dev": "vite",
     "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "lint:eslint": "eslint .",
     "lint:stylelint": "stylelint \"src/**/*.{css,vue}\" \"public/*.css\"",
     "lint:oxlint": "oxlint -c oxlintrc.json src public",
