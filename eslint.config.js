@@ -4,7 +4,9 @@ import pluginVue from 'eslint-plugin-vue'
 
 export default tseslint.config(
   {
-    ignores: ['dist', 'node_modules', 'coverage'],
+    // `public/` ships verbatim to the CDN and lives outside the TypeScript
+    // project, so the type-aware rules have no program to check it against.
+    ignores: ['dist', 'node_modules', 'coverage', 'public'],
   },
   js.configs.recommended,
   ...tseslint.configs.strictTypeChecked,

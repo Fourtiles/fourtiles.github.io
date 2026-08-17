@@ -11,6 +11,20 @@
   --button-background-color: #8ace00;
   --button-background-hover-color: #78b500;
   --focus-color: #040303;
+
+  /* The mini game restates the tile palette from `Tile.vue`: brat green tiles,
+     platinum outlines for empty cells, auburn for a word that is not a word. */
+  --tile-color: #8ace00;
+  --tile-hover-color: #78b500;
+  --tile-text-color: #040303;
+  --tile-shadow: 4px 4px 10px 0 rgb(0 0 0 / 25%);
+  --slot-border-color: #ddd;
+  --invalid-color: #ac3931;
+  --invalid-text-color: #fff;
+
+  /* Geometry shared by the tiles, the board slots, and the answer row. */
+  --tile-radius: 10px;
+  --tile-gap: 10px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -21,6 +35,13 @@
     --button-background-color: #8ace00;
     --button-background-hover-color: #a2e62b;
     --focus-color: #f3f4f6;
+    --tile-color: #8ace00;
+    --tile-hover-color: #a2e62b;
+    --tile-text-color: #040303;
+    --tile-shadow: 4px 4px 10px 0 rgb(0 0 0 / 60%);
+    --slot-border-color: #3c3b3b;
+    --invalid-color: #ac3931;
+    --invalid-text-color: #fff;
   }
 }
 
@@ -43,16 +64,19 @@ body {
   background-color: var(--background);
 }
 
+/* Block auto margins centre the content vertically. They collapse to zero if the
+   content ever outgrows the viewport, keeping the top edge in reach. */
 main {
   width: 100%;
   max-width: 800px;
+  margin-block: auto;
 }
 
 h1 {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin: 0 0 40px;
+  margin: 0 0 28px;
   font-weight: normal;
 }
 
@@ -66,7 +90,7 @@ h1 {
 }
 
 .lede {
-  margin: 0 0 40px;
+  margin: 0 0 28px;
   font-size: 24px;
   color: var(--muted-color);
 }
@@ -90,6 +114,214 @@ h1 {
   outline-offset: 3px;
 }
 
+/* The mini game */
+
+.puzzle {
+  margin: 0 0 32px;
+}
+
+/* The row the picked tiles assemble in, padded out with empty cells so its
+   width never shifts. */
+.word {
+  display: flex;
+  gap: var(--tile-gap);
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 24px;
+  transition: gap 400ms ease;
+}
+
+.word > * {
+  flex: 0 0 auto;
+  width: 68px;
+  height: 60px;
+}
+
+.ghost {
+  border: 2px dashed var(--slot-border-color);
+  border-radius: var(--tile-radius);
+}
+
+/* One tile, wherever it sits: the board sizes it to its slot, the answer row
+   sizes it to a cell of the word. */
+.tile {
+  display: grid;
+  place-items: center;
+  font-family: inherit;
+  font-size: 30px;
+  line-height: 1;
+  color: var(--tile-text-color);
+  cursor: pointer;
+  user-select: none;
+  background-color: var(--tile-color);
+  border: 0;
+  border-radius: var(--tile-radius);
+  box-shadow: var(--tile-shadow);
+}
+
+.tile:hover {
+  background-color: var(--tile-hover-color);
+}
+
+.tile:focus-visible {
+  outline: 3px solid var(--focus-color);
+  outline-offset: 3px;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--tile-gap);
+  width: min(100%, 320px);
+  margin: 0 auto 16px;
+}
+
+/* The grid display would otherwise beat the user agent's `[hidden]` rule and
+   keep four dashed cells on screen with every tile picked. Dropping the empty
+   board out of the layout holds the page to the height it opened at. */
+.board[hidden] {
+  display: none;
+}
+
+/* Each slot keeps its cell whether or not its tile is on the board: the
+   dashed outline sits under the tile in the same grid cell. */
+.slot {
+  display: grid;
+  min-height: 80px;
+  animation: tile-drop 450ms ease-out backwards;
+}
+
+.slot::before {
+  grid-area: 1 / 1;
+  content: '';
+  border: 2px dashed var(--slot-border-color);
+  border-radius: var(--tile-radius);
+}
+
+.slot > .tile {
+  grid-area: 1 / 1;
+  width: 100%;
+  height: 100%;
+}
+
+.controls {
+  min-height: 28px;
+  margin: 0 0 8px;
+}
+
+.reset {
+  font: inherit;
+  font-size: 18px;
+  color: var(--muted-color);
+  text-decoration: underline;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  border-radius: 4px;
+}
+
+.reset:hover {
+  color: var(--text-color);
+}
+
+.reset:focus-visible {
+  outline: 3px solid var(--focus-color);
+  outline-offset: 3px;
+}
+
+/* A word that is not a word: auburn tiles and a headshake, as in the game. */
+.word.is-wrong .tile {
+  color: var(--invalid-text-color);
+  background-color: var(--invalid-color);
+}
+
+.word.is-wrong {
+  animation: headshake 500ms ease-in-out;
+}
+
+/* The solved word closes its gaps and squares off its inner corners, so the
+   four tiles read as the single word MISSING. */
+.word.is-solved {
+  gap: 0;
+}
+
+.word.is-solved .tile {
+  animation: tile-pop 500ms ease-in-out;
+}
+
+.word.is-solved .tile:nth-child(2) {
+  animation-delay: 70ms;
+}
+
+.word.is-solved .tile:nth-child(3) {
+  animation-delay: 140ms;
+}
+
+.word.is-solved .tile:nth-child(4) {
+  animation-delay: 210ms;
+}
+
+.word.is-solved .tile:not(:first-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.word.is-solved .tile:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.announcer {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+@keyframes tile-drop {
+  from {
+    opacity: 0;
+    transform: translateY(-16px) rotate(-4deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes tile-pop {
+  0%,
+  100% {
+    transform: none;
+  }
+
+  40% {
+    transform: translateY(-10px) scale(1.06);
+  }
+}
+
+@keyframes headshake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  25%,
+  75% {
+    transform: translateX(-5px);
+  }
+
+  50% {
+    transform: translateX(5px);
+  }
+}
+
 @media (width <= 700px) {
   .code {
     font-size: 48px;
@@ -106,5 +338,37 @@ h1 {
   .button {
     padding: 15px;
     font-size: 24px;
+  }
+
+  .word > * {
+    width: 60px;
+    height: 52px;
+  }
+
+  .board {
+    width: min(100%, 280px);
+  }
+
+  .slot {
+    min-height: 64px;
+  }
+
+  .tile {
+    font-size: 24px;
+  }
+}
+
+/* Motion off: the tiles and the answer row hold their finished positions, the
+   solved word still closes to a single unbroken MISSING, and a wrong word still
+   turns auburn before it is handed back to the board. */
+@media (prefers-reduced-motion: reduce) {
+  .slot,
+  .word.is-wrong,
+  .word.is-solved .tile {
+    animation: none;
+  }
+
+  .word {
+    transition: none;
   }
 }

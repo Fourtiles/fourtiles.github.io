@@ -31,7 +31,37 @@
 
       <p class="lede">There’s no word at this address.</p>
 
+      <section class="puzzle" aria-label="Mini Fourtiles puzzle">
+        <div class="word" id="word">
+          <span class="ghost" aria-hidden="true"></span>
+          <span class="ghost" aria-hidden="true"></span>
+          <span class="ghost" aria-hidden="true"></span>
+          <span class="ghost" aria-hidden="true"></span>
+        </div>
+
+        <div class="board" id="board">
+          <div class="slot" style="animation-delay: 0ms">
+            <button class="tile" type="button" data-tile="IN">IN</button>
+          </div>
+          <div class="slot" style="animation-delay: 80ms">
+            <button class="tile" type="button" data-tile="G">G</button>
+          </div>
+          <div class="slot" style="animation-delay: 160ms">
+            <button class="tile" type="button" data-tile="SS">SS</button>
+          </div>
+          <div class="slot" style="animation-delay: 240ms">
+            <button class="tile" type="button" data-tile="MI">MI</button>
+          </div>
+        </div>
+
+        <p class="controls"><button class="reset" id="reset" type="button" hidden>Clear</button></p>
+
+        <p class="announcer" id="announcer" aria-live="polite"></p>
+      </section>
+
       <p><a class="button" href="/">Back to the game</a></p>
     </main>
+
+    <script src="/404.js" defer></script>
   </body>
 </html>
