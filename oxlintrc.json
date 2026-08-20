@@ -17,6 +17,7 @@
     "no-void": "off",
     "no-undefined": "off",
     "no-plusplus": "off",
+    "one-var": "off",
     "no-duplicate-imports": "off",
     "new-cap": "off",
     "curly": "off",
