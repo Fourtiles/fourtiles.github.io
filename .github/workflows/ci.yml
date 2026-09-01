@@ -45,6 +45,11 @@ jobs:
           node-version-file: .nvmrc
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+      - name: Cache Playwright browsers
+        uses: actions/cache@v6
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
       # Fourtiles' Playwright config runs chromium, firefox and webkit, so all
       # three browsers are installed rather than chromium alone.
       - name: Install Playwright Browsers
