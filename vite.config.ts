@@ -4,11 +4,13 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import { VitePWA } from 'vite-plugin-pwa'
+import gameShards from './build/gameShards.ts'
 
 // https://vite.dev/config/
 export default defineConfig(async ({ command }) => {
   const plugins = [
     vue(),
+    gameShards(),
     command === 'serve' && vueDevTools({ launchEditor: process.env.VITE_LAUNCH_EDITOR }),
     VitePWA({
       registerType: 'autoUpdate',
@@ -16,10 +18,18 @@ export default defineConfig(async ({ command }) => {
       injectRegister: false,
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,png,ico,webmanifest,woff,woff2}'],
-        // The game dataset chunk dwarfs the app shell and is only ever needed one
-        // record at a time, so it stays out of the precache the service worker
-        // downloads on install.
-        globIgnores: ['**/node_modules/**/*', '**/games-*.js'],
+        // Game shards are fetched one at a time, so they are cached as they are
+        // played instead of being downloaded whole when the worker installs.
+        runtimeCaching: [
+          {
+            urlPattern: /\/games\/\d+\.json$/u,
+            handler: 'StaleWhileRevalidate',
+            options: {
+              cacheName: 'game-shards',
+              expiration: { maxEntries: 40 },
+            },
+          },
+        ],
         // This site has no client-side router, so an unknown path is a real 404.
         // vite-plugin-pwa otherwise defaults this to index.html, which makes the
         // service worker answer every unknown path with the home page.
