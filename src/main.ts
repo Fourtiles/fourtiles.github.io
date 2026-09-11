@@ -52,7 +52,6 @@ Sentry.init({
         trackComponents: true,
       },
     }),
-    Sentry.replayIntegration({ maskAllText: true, blockAllMedia: true }),
   ],
   tracesSampleRate: 1.0,
   enableLogs: true,
@@ -92,3 +91,12 @@ app.mount('#app')
 
 // Only a production build emits `sw.js`.
 if (import.meta.env.PROD) registerServiceWorker()
+
+try {
+  const { default: startSessionReplay } = await import('@/sessionReplay')
+  startSessionReplay()
+} catch (error) {
+  Sentry.logger.warn('Session replay failed to load', {
+    reason: error instanceof Error ? error.message : String(error),
+  })
+}

@@ -16,6 +16,10 @@ export default defineConfig(async ({ command }) => {
       injectRegister: false,
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,png,ico,webmanifest,woff,woff2}'],
+        // The game dataset chunk dwarfs the app shell and is only ever needed one
+        // record at a time, so it stays out of the precache the service worker
+        // downloads on install.
+        globIgnores: ['**/node_modules/**/*', '**/games-*.js'],
         // This site has no client-side router, so an unknown path is a real 404.
         // vite-plugin-pwa otherwise defaults this to index.html, which makes the
         // service worker answer every unknown path with the home page.

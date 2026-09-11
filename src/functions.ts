@@ -2,19 +2,16 @@ import type { Game } from '@/stores/game'
 import useGameStore from '@/stores/game'
 import { random, sample } from 'lodash-es'
 import confetti from 'canvas-confetti'
-import { useIntervalFn, useTimeoutFn } from '@vueuse/core'
+import { useIntervalFn } from '@vueuse/core'
 
 export function startRandomGame() {
   const game = useGameStore()
   game.resetGame()
-  // short delay so even if the file loads instantly, it's obvious that a new game has started
-  useTimeoutFn(() => {
-    void import('@/data/games.json').then((module) => {
-      const games = module.default as Game[]
-      const chosenGame = sample(games)
-      if (chosenGame) game.startGame(chosenGame)
-    })
-  }, 200)
+  void import('@/data/games.json').then((module) => {
+    const games = module.default as Game[]
+    const chosenGame = sample(games)
+    if (chosenGame) game.startGame(chosenGame)
+  })
 }
 
 export function fireworks(duration: number) {
