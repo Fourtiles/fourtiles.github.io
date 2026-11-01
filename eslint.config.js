@@ -6,7 +6,14 @@ export default tseslint.config(
   {
     // `public/` ships verbatim to the CDN and lives outside the TypeScript
     // project, so the type-aware rules have no program to check it against.
-    ignores: ['dist', 'node_modules', 'coverage', 'public'],
+    ignores: [
+      'test-results/**',
+      'playwright-report/**',
+      'dist',
+      'node_modules',
+      'coverage',
+      'public',
+    ],
   },
   js.configs.recommended,
   ...tseslint.configs.strictTypeChecked,

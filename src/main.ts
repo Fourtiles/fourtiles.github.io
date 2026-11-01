@@ -44,7 +44,7 @@ Sentry.init({
   dsn: sentryDSN,
   release: import.meta.env.VITE_SENTRY_RELEASE || undefined,
   environment: import.meta.env.PROD ? 'production' : 'development',
-  sendDefaultPii: true,
+
   integrations: [
     Sentry.browserTracingIntegration(),
     Sentry.vueIntegration({
@@ -54,7 +54,7 @@ Sentry.init({
     }),
   ],
   tracesSampleRate: 1.0,
-  enableLogs: true,
+
   replaysSessionSampleRate: 0.1,
   replaysOnErrorSampleRate: 1.0,
   ignoreErrors: [
